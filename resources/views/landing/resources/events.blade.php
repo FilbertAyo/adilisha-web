@@ -29,151 +29,49 @@
       </div>
 
       <div class="row">
-        
+        @forelse($upcomingEvents as $event)
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('images/event-1.jpg') }}');">
+            <a href="#" class="block-20" style="background-image: url('{{ $event->image ? asset($event->image) : asset('front-end/images/hero_bg.jpg') }}');">
             </a>
             <div class="text p-4 d-block">
               <div class="meta mb-3">
-                <div><a href="#">March 15, 2026</a></div>
-                <div><a href="#">CHOMOZA Program</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 12</a></div>
+                <div><a href="#">{{ $event->event_date->format('M d, Y') }}</a></div>
+                <div><a href="#">{{ $event->organizer ?? 'Adilisha' }}</a></div>
+                <div>
+                  @if($event->status === 'open')
+                    <span class="badge badge-success">Open</span>
+                  @elseif($event->status === 'closed')
+                    <span class="badge badge-danger">Closed</span>
+                  @else
+                    <span class="badge badge-warning">Upcoming</span>
+                  @endif
+                </div>
               </div>
-              <h3 class="heading mb-4"><a href="#">National Robotics Competition 2026</a></h3>
+              <h3 class="heading mb-4"><a href="#">{{ $event->name }}</a></h3>
               <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 9:00AM-5:00PM</span>
-                <span><i class="icon-map-o"></i> University of Dar es Salaam</span>
+                <span class="mr-2"><i class="icon-clock-o"></i> {{ $event->event_date->format('h:i A') }}</span>
+                <span><i class="icon-map-o"></i> {{ $event->location }}</span>
               </p>
-              <p>
-                CHOMOZA students showcase their robotics projects and compete for national 
-                recognition. Open to secondary school teams across Tanzania.
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Register Now <i class="ion-ios-arrow-forward"></i></a></p>
+              <p>{{ Str::limit($event->details, 120) }}</p>
+              @if($event->application_link)
+                <p><a href="{{ $event->application_link }}" target="_blank" class="btn btn-primary btn-sm">
+                  {{ $event->status === 'open' ? 'Register Now' : 'Learn More' }} <i class="ion-ios-arrow-forward"></i>
+                </a></p>
+              @else
+                <p><a href="{{ route('contact') }}" class="btn btn-primary btn-sm">Contact Us <i class="ion-ios-arrow-forward"></i></a></p>
+              @endif
             </div>
           </div>
         </div>
-
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('images/event-2.jpg') }}');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">April 5-7, 2026</a></div>
-                <div><a href="#">Teacher Training</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 8</a></div>
-              </div>
-              <h3 class="heading mb-4"><a href="#">STEM Teachers Workshop - Mwanza</a></h3>
-              <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 8:30AM-4:00PM</span>
-                <span><i class="icon-map-o"></i> Mwanza Teachers College</span>
-              </p>
-              <p>
-                Three-day intensive training on practical STEM pedagogy, hands-on activities, 
-                and classroom management for effective learning.
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Apply Now <i class="ion-ios-arrow-forward"></i></a></p>
-            </div>
+        @empty
+        <div class="col-12">
+          <div class="alert alert-info text-center">
+            <h4>No Upcoming Events</h4>
+            <p>Check back soon for exciting events and opportunities!</p>
           </div>
         </div>
-
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('images/event-3.jpg') }}');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">May 20, 2026</a></div>
-                <div><a href="#">Community Event</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 15</a></div>
-              </div>
-              <h3 class="heading mb-4"><a href="#">Girls in STEM Career Fair</a></h3>
-              <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 10:00AM-3:00PM</span>
-                <span><i class="icon-map-o"></i> Mlimani City Conference Hall</span>
-              </p>
-              <p>
-                Connecting young girls with women professionals in STEM fields. Mentorship sessions, 
-                career talks, and interactive demonstrations.
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('front-end/images/vutamdogo.jpg') }}');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">June 10, 2026</a></div>
-                <div><a href="#">VUTAMDOGO Program</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 20</a></div>
-              </div>
-              <h3 class="heading mb-4"><a href="#">Primary School Science Fair - Dodoma</a></h3>
-              <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 9:00AM-2:00PM</span>
-                <span><i class="icon-map-o"></i> Dodoma Regional Stadium</span>
-              </p>
-              <p>
-                VUTAMDOGO students present science experiments and projects. Parents and community 
-                members invited to celebrate young learners' achievements.
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Learn More <i class="ion-ios-arrow-forward"></i></a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('front-end/images/stem-labs.jpg') }}');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">July 18, 2026</a></div>
-                <div><a href="#">Innovation Showcase</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 10</a></div>
-              </div>
-              <h3 class="heading mb-4"><a href="#">Tanzania Youth Innovation Summit</a></h3>
-              <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 8:00AM-6:00PM</span>
-                <span><i class="icon-map-o"></i> Julius Nyerere Convention Centre</span>
-              </p>
-              <p>
-                National platform for young innovators to present tech solutions addressing 
-                community challenges. Prizes and mentorship opportunities available.
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Register Team <i class="ion-ios-arrow-forward"></i></a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="#" class="block-20" style="background-image: url('{{ asset('front-end/images/chomoza.jpg') }}');">
-            </a>
-            <div class="text p-4 d-block">
-              <div class="meta mb-3">
-                <div><a href="#">August 22-23, 2026</a></div>
-                <div><a href="#">Coding Bootcamp</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 18</a></div>
-              </div>
-              <h3 class="heading mb-4"><a href="#">Girls Code Weekend - Arusha</a></h3>
-              <p class="time-loc">
-                <span class="mr-2"><i class="icon-clock-o"></i> 9:00AM-5:00PM</span>
-                <span><i class="icon-map-o"></i> Arusha Tech Hub</span>
-              </p>
-              <p>
-                Two-day intensive coding bootcamp for secondary school girls. Learn web development, 
-                build apps, and connect with mentors. All skill levels welcome!
-              </p>
-              <p><a href="#" class="btn btn-primary btn-sm">Sign Up <i class="ion-ios-arrow-forward"></i></a></p>
-            </div>
-          </div>
-        </div>
-
+        @endforelse
       </div>
     </div>
   </section>
@@ -191,7 +89,7 @@
       </div>
 
       <div class="row">
-        
+        @forelse($pastEvents as $event)
         <div class="col-md-6 col-lg-3 ftco-animate mb-4">
           <div class="card border-0 shadow-sm h-100">
             <div class="card-body">
@@ -199,67 +97,20 @@
                 <div class="rounded-circle bg-primary bg-opacity-10 p-3 mr-3">
                   <i class="icon-trophy text-primary" style="font-size: 24px;"></i>
                 </div>
-                <small class="text-muted">Dec 12, 2025</small>
+                <small class="text-muted">{{ $event->event_date->format('M d, Y') }}</small>
               </div>
-              <h5 class="card-title mb-3">CHOMOZA Innovation Expo 2025</h5>
+              <h5 class="card-title mb-3">{{ $event->name }}</h5>
               <p class="card-text text-muted small">
-                150+ students showcased robotics and IoT solutions. Winners received laptops and mentorship.
+                {{ Str::limit($event->details, 100) }}
               </p>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-3 ftco-animate mb-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <div class="rounded-circle bg-primary bg-opacity-10 p-3 mr-3">
-                  <i class="icon-users text-primary" style="font-size: 24px;"></i>
-                </div>
-                <small class="text-muted">Nov 5, 2025</small>
-              </div>
-              <h5 class="card-title mb-3">National Teacher Training</h5>
-              <p class="card-text text-muted small">
-                250+ teachers from 15 regions trained in practical STEM pedagogy and innovation.
-              </p>
-            </div>
-          </div>
+        @empty
+        <div class="col-12">
+          <p class="text-center text-muted">No past events to display yet.</p>
         </div>
-
-        <div class="col-md-6 col-lg-3 ftco-animate mb-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <div class="rounded-circle bg-primary bg-opacity-10 p-3 mr-3">
-                  <i class="icon-heart text-primary" style="font-size: 24px;"></i>
-                </div>
-                <small class="text-muted">Oct 18, 2025</small>
-              </div>
-              <h5 class="card-title mb-3">Community STEM Day</h5>
-              <p class="card-text text-muted small">
-                Parents and leaders celebrated STEM learning with experiments and project presentations.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 ftco-animate mb-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <div class="rounded-circle bg-primary bg-opacity-10 p-3 mr-3">
-                  <i class="icon-star text-primary" style="font-size: 24px;"></i>
-                </div>
-                <small class="text-muted">Sep 14, 2025</small>
-              </div>
-              <h5 class="card-title mb-3">Girls Robotics Challenge</h5>
-              <p class="card-text text-muted small">
-                12 all-girls teams competed. Winners earned a trip to Africa Robotics Championship.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        @endforelse
       </div>
     </div>
   </section>
@@ -304,41 +155,27 @@
                 </tr>
               </thead>
               <tbody>
+                @forelse($upcomingEvents as $event)
                 <tr>
-                  <td>March 15, 2026</td>
-                  <td>National Robotics Competition</td>
-                  <td>Dar es Salaam</td>
-                  <td><span class="badge badge-primary">Competition</span></td>
-                  <td><a href="#" class="btn btn-sm btn-outline-primary">Register</a></td>
+                  <td>{{ $event->event_date->format('M d, Y') }}</td>
+                  <td>{{ $event->name }}</td>
+                  <td>{{ $event->location }}</td>
+                  <td><span class="badge badge-primary">{{ ucfirst($event->type) }}</span></td>
+                  <td>
+                    @if($event->application_link)
+                      <a href="{{ $event->application_link }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                        {{ $event->status === 'open' ? 'Register' : 'Learn More' }}
+                      </a>
+                    @else
+                      <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-primary">Contact</a>
+                    @endif
+                  </td>
                 </tr>
+                @empty
                 <tr>
-                  <td>April 5-7, 2026</td>
-                  <td>STEM Teachers Workshop</td>
-                  <td>Mwanza</td>
-                  <td><span class="badge badge-success">Training</span></td>
-                  <td><a href="#" class="btn btn-sm btn-outline-primary">Apply</a></td>
+                  <td colspan="5" class="text-center">No events scheduled at the moment</td>
                 </tr>
-                <tr>
-                  <td>May 20, 2026</td>
-                  <td>Girls in STEM Career Fair</td>
-                  <td>Dar es Salaam</td>
-                  <td><span class="badge badge-info">Career Fair</span></td>
-                  <td><a href="#" class="btn btn-sm btn-outline-primary">Join</a></td>
-                </tr>
-                <tr>
-                  <td>June 10, 2026</td>
-                  <td>Primary School Science Fair</td>
-                  <td>Dodoma</td>
-                  <td><span class="badge badge-warning">Showcase</span></td>
-                  <td><a href="#" class="btn btn-sm btn-outline-primary">Learn More</a></td>
-                </tr>
-                <tr>
-                  <td>July 18, 2026</td>
-                  <td>Youth Innovation Summit</td>
-                  <td>Dar es Salaam</td>
-                  <td><span class="badge badge-danger">Summit</span></td>
-                  <td><a href="#" class="btn btn-sm btn-outline-primary">Register</a></td>
-                </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
@@ -347,6 +184,4 @@
     </div>
   </section>
 
-
 </x-landing-layout>
-

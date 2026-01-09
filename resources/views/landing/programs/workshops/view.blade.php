@@ -1,5 +1,5 @@
 <x-landing-layout>
-    <div class="hero-wrap2" style="background-image: url('front-end/images/hero_bg.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap2" style="background-image: url({{ asset('front-end/images/hero_bg.jpg') }});" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -17,155 +17,153 @@
           <div class="col-md-8 ftco-animate">
             
             <!-- Workshop Title and Overview -->
-            <h2 class="mb-3">Advanced STEM Workshop for Girls</h2>
+            <h2 class="mb-3">{{ $workshop->title }}</h2>
             <div class="meta mb-4">
               <div class="d-flex align-items-center mb-3">
-                <span class="mr-3"><i class="icon-calendar"></i> March 15, 2024</span>
-                <span class="mr-3"><i class="icon-clock-o"></i> 9:00 AM - 4:00 PM</span>
-                <span><i class="icon-map-o"></i> Dar es Salaam, Tanzania</span>
+                <span class="mr-3"><i class="icon-calendar"></i> {{ $workshop->formatted_date }}</span>
+                <span class="mr-3"><i class="icon-clock-o"></i> {{ $workshop->formatted_time_range }}</span>
+                <span><i class="icon-map-o"></i> {{ $workshop->location }}</span>
               </div>
+              @if($workshop->status)
+                <span class="badge badge-{{ $workshop->status_badge_class }}">{{ ucfirst($workshop->status) }}</span>
+              @endif
             </div>
             
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
+            @if($workshop->overview)
+              <p>{{ $workshop->overview }}</p>
+            @endif
             
-            <p>
-              <img src="front-end/images/workshop-main.jpg" alt="Workshop" class="img-fluid">
-            </p>
+            @if($workshop->main_image)
+              <p>
+                <img src="{{ asset('storage/' . $workshop->main_image) }}" alt="{{ $workshop->title }}" class="img-fluid">
+              </p>
+            @endif
             
-            <h3 class="mb-3 mt-5">Workshop Overview</h3>
-            <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            
-            <h3 class="mb-3 mt-5">What We Learned</h3>
-            <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+            @if($workshop->what_we_learned)
+              <h3 class="mb-3 mt-5">What We Learned</h3>
+              <p>{{ $workshop->what_we_learned }}</p>
+            @endif
             
             <!-- Gallery of What We Learned -->
-            <div class="row mt-4 mb-5">
-              <div class="col-md-6 mb-3">
-                <img src="front-end/images/workshop-gallery-1.jpg" alt="Learning" class="img-fluid rounded">
+            @if($workshop->galleries->count() > 0)
+              <div class="row mt-4 mb-5">
+                @foreach($workshop->galleries as $gallery)
+                  <div class="col-md-6 mb-3">
+                    <img src="{{ asset('storage/' . $gallery->image_path) }}" 
+                         alt="{{ $gallery->caption ?? 'Workshop gallery' }}" 
+                         class="img-fluid rounded">
+                    @if($gallery->caption)
+                      <p class="text-muted small mt-2">{{ $gallery->caption }}</p>
+                    @endif
+                  </div>
+                @endforeach
               </div>
-              <div class="col-md-6 mb-3">
-                <img src="front-end/images/workshop-gallery-2.jpg" alt="Learning" class="img-fluid rounded">
-              </div>
-              <div class="col-md-6 mb-3">
-                <img src="front-end/images/workshop-gallery-3.jpg" alt="Learning" class="img-fluid rounded">
-              </div>
-              <div class="col-md-6 mb-3">
-                <img src="front-end/images/workshop-gallery-4.jpg" alt="Learning" class="img-fluid rounded">
-              </div>
-            </div>
+            @endif
             
             <!-- Participation & Attendance -->
-            <div class="bg-light p-4 rounded mb-5">
-              <h3 class="mb-4 text-primary">Participation & Attendance</h3>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <h5><strong>Total Participants:</strong> 45 students</h5>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <h5><strong>Girls Participation:</strong> 28 (62%)</h5>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <h5><strong>Attendance Rate:</strong> 98%</h5>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <h5><strong>Schools Represented:</strong> 8 schools</h5>
+            @if($workshop->total_participants > 0 || $workshop->girls_participation > 0 || $workshop->attendance_rate > 0 || $workshop->schools_represented > 0)
+              <div class="bg-light p-4 rounded mb-5">
+                <h3 class="mb-4 text-primary">Participation & Attendance</h3>
+                <div class="row">
+                  @if($workshop->total_participants > 0)
+                    <div class="col-md-6 mb-3">
+                      <h5><strong>Total Participants:</strong> {{ $workshop->total_participants }} students</h5>
+                    </div>
+                  @endif
+                  @if($workshop->girls_participation > 0)
+                    <div class="col-md-6 mb-3">
+                      <h5><strong>Girls Participation:</strong> {{ $workshop->girls_participation }} ({{ $workshop->girls_participation_percentage }}%)</h5>
+                    </div>
+                  @endif
+                  @if($workshop->attendance_rate > 0)
+                    <div class="col-md-6 mb-3">
+                      <h5><strong>Attendance Rate:</strong> {{ $workshop->attendance_rate }}%</h5>
+                    </div>
+                  @endif
+                  @if($workshop->schools_represented > 0)
+                    <div class="col-md-6 mb-3">
+                      <h5><strong>Schools Represented:</strong> {{ $workshop->schools_represented }} schools</h5>
+                    </div>
+                  @endif
                 </div>
               </div>
-            </div>
+            @endif
             
             <!-- Testimonials -->
-            <div class="mt-5 mb-5">
-              <h3 class="mb-4">Testimonials</h3>
-              
-              <div class="testimonial p-4 bg-light rounded mb-4">
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bio mr-4">
-                    <img src="front-end/images/beneficiary-1.jpg" alt="Student" class="img-fluid rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+            @if($workshop->testimonials->count() > 0)
+              <div class="mt-5 mb-5">
+                <h3 class="mb-4">Testimonials</h3>
+                
+                @foreach($workshop->testimonials as $testimonial)
+                  <div class="testimonial p-4 bg-light rounded mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                      @if($testimonial->image)
+                        <div class="bio mr-4">
+                          <img src="{{ asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->name }}" 
+                               class="img-fluid rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+                      @endif
+                      <div>
+                        <h5 class="mb-1">{{ $testimonial->name }}</h5>
+                        <p class="text-muted mb-0">{{ $testimonial->role }}{{ $testimonial->school ? ', ' . $testimonial->school : '' }}</p>
+                      </div>
+                    </div>
+                    <p class="mb-0">"{{ $testimonial->testimonial }}"</p>
                   </div>
-                  <div>
-                    <h5 class="mb-1">Sarah Juma</h5>
-                    <p class="text-muted mb-0">Student, Mwanza Secondary School</p>
-                  </div>
-                </div>
-                <p class="mb-0">"This workshop changed my perspective on STEM. I never thought I could be good at coding, but the hands-on activities made it so easy to understand. I'm now considering pursuing Computer Science in university!"</p>
+                @endforeach
               </div>
-              
-              <div class="testimonial p-4 bg-light rounded mb-4">
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bio mr-4">
-                    <img src="front-end/images/beneficiary-2.jpg" alt="Student" class="img-fluid rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
-                  </div>
-                  <div>
-                    <h5 class="mb-1">Amina Hassan</h5>
-                    <p class="text-muted mb-0">Student, Dar es Salaam High School</p>
-                  </div>
-                </div>
-                <p class="mb-0">"The robotics session was incredible! Building and programming my first robot was such an empowering experience. The facilitators were patient and encouraging. I'm excited to join more workshops!"</p>
-              </div>
-              
-              <div class="testimonial p-4 bg-light rounded">
-                <div class="d-flex align-items-center mb-3">
-                  <div class="bio mr-4">
-                    <img src="front-end/images/beneficiary-3.jpg" alt="Teacher" class="img-fluid rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
-                  </div>
-                  <div>
-                    <h5 class="mb-1">Mr. John Mwanga</h5>
-                    <p class="text-muted mb-0">Teacher, Kilimanjaro Secondary</p>
-                  </div>
-                </div>
-                <p class="mb-0">"As an educator, I'm impressed by how this workshop engaged the students. The practical approach to STEM education is exactly what our curriculum needs. I've learned new teaching methods that I'll implement in my classroom."</p>
-              </div>
-            </div>
+            @endif
             
             <!-- Beneficiaries Gallery -->
-            <div class="mt-5">
-              <h3 class="mb-4">Our Beneficiaries</h3>
-              <p>Meet some of the amazing students who participated in this workshop and are now pursuing their dreams in STEM fields.</p>
-              
-              <div class="row mt-4">
-                <div class="col-md-4 mb-4">
-                  <div class="beneficiary-card text-center">
-                    <img src="front-end/images/beneficiary-gallery-1.jpg" alt="Beneficiary" class="img-fluid rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
-                    <h5>Fatuma Ali</h5>
-                    <p class="text-muted">Future Engineer</p>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="beneficiary-card text-center">
-                    <img src="front-end/images/beneficiary-gallery-2.jpg" alt="Beneficiary" class="img-fluid rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
-                    <h5>Grace Mwanga</h5>
-                    <p class="text-muted">Future Programmer</p>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="beneficiary-card text-center">
-                    <img src="front-end/images/beneficiary-gallery-3.jpg" alt="Beneficiary" class="img-fluid rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
-                    <h5>Mary Joseph</h5>
-                    <p class="text-muted">Future Scientist</p>
-                  </div>
+            @if($workshop->beneficiaries->count() > 0)
+              <div class="mt-5">
+                <h3 class="mb-4">Our Beneficiaries</h3>
+                <p>Meet some of the amazing students who participated in this workshop and are now pursuing their dreams in STEM fields.</p>
+                
+                <div class="row mt-4">
+                  @foreach($workshop->beneficiaries as $beneficiary)
+                    <div class="col-md-4 mb-4">
+                      <div class="beneficiary-card text-center">
+                        @if($beneficiary->image)
+                          <img src="{{ asset('storage/' . $beneficiary->image) }}" alt="{{ $beneficiary->name }}" 
+                               class="img-fluid rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
+                        @else
+                          <div class="rounded-circle mb-3 mx-auto bg-secondary d-flex align-items-center justify-content-center" 
+                               style="width: 200px; height: 200px;">
+                            <span class="text-white" style="font-size: 48px;">{{ substr($beneficiary->name, 0, 1) }}</span>
+                          </div>
+                        @endif
+                        <h5>{{ $beneficiary->name }}</h5>
+                        @if($beneficiary->future_aspiration)
+                          <p class="text-muted">{{ $beneficiary->future_aspiration }}</p>
+                        @endif
+                      </div>
+                    </div>
+                  @endforeach
                 </div>
               </div>
-            </div>
+            @endif
             
-            <div class="tag-widget post-tag-container mb-5 mt-5">
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">STEM</a>
-                <a href="#" class="tag-cloud-link">Workshop</a>
-                <a href="#" class="tag-cloud-link">Education</a>
-                <a href="#" class="tag-cloud-link">Girls in STEM</a>
-                <a href="#" class="tag-cloud-link">Technology</a>
+            <!-- Tags -->
+            @if($workshop->tags->count() > 0)
+              <div class="tag-widget post-tag-container mb-5 mt-5">
+                <div class="tagcloud">
+                  @foreach($workshop->tags as $tag)
+                    <a href="{{ route('workshops', ['tag' => $tag->slug]) }}" class="tag-cloud-link">{{ $tag->name }}</a>
+                  @endforeach
+                </div>
               </div>
-            </div>
+            @endif
 
           </div> <!-- .col-md-8 -->
           
           <!-- Sidebar -->
           <div class="col-md-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <form action="{{ route('workshops') }}" method="GET" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="Search workshops...">
+                  <input type="text" name="search" class="form-control" placeholder="Search workshops...">
                 </div>
               </form>
             </div>
@@ -173,56 +171,49 @@
             <div class="sidebar-box ftco-animate">
               <h3>Workshop Information</h3>
               <ul class="list-unstyled">
-                <li class="mb-3"><strong>Date:</strong> March 15, 2024</li>
-                <li class="mb-3"><strong>Time:</strong> 9:00 AM - 4:00 PM</li>
-                <li class="mb-3"><strong>Location:</strong> Dar es Salaam, Tanzania</li>
-                <li class="mb-3"><strong>Duration:</strong> Full Day</li>
-                <li class="mb-3"><strong>Participants:</strong> 45 students</li>
-                <li><strong>Status:</strong> Completed</li>
+                <li class="mb-3"><strong>Date:</strong> {{ $workshop->formatted_date }}</li>
+                <li class="mb-3"><strong>Time:</strong> {{ $workshop->formatted_time_range }}</li>
+                <li class="mb-3"><strong>Location:</strong> {{ $workshop->location }}</li>
+                @if($workshop->duration)
+                  <li class="mb-3"><strong>Duration:</strong> {{ $workshop->duration }}</li>
+                @endif
+                @if($workshop->total_participants > 0)
+                  <li class="mb-3"><strong>Participants:</strong> {{ $workshop->total_participants }} students</li>
+                @endif
+                <li><strong>Status:</strong> <span class="badge badge-{{ $workshop->status_badge_class }}">{{ ucfirst($workshop->status) }}</span></li>
               </ul>
             </div>
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Recent Workshops</h3>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(front-end/images/workshop-1.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Introduction to Robotics Workshop</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Feb 20, 2024</a></div>
+            @if($recentWorkshops->count() > 0)
+              <div class="sidebar-box ftco-animate">
+                <h3>Recent Workshops</h3>
+                @foreach($recentWorkshops as $recentWorkshop)
+                  <div class="block-21 mb-4 d-flex">
+                    <a href="{{ route('workshops.show', $recentWorkshop->slug) }}" class="blog-img mr-4" 
+                       style="background-image: url({{ $recentWorkshop->main_image ? asset('storage/' . $recentWorkshop->main_image) : asset('front-end/images/workshop-1.jpg') }});"></a>
+                    <div class="text">
+                      <h3 class="heading"><a href="{{ route('workshops.show', $recentWorkshop->slug) }}">{{ $recentWorkshop->title }}</a></h3>
+                      <div class="meta">
+                        <div><a href="{{ route('workshops.show', $recentWorkshop->slug) }}">
+                          <span class="icon-calendar"></span> {{ $recentWorkshop->formatted_date }}
+                        </a></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                @endforeach
               </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(front-end/images/workshop-2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Coding for Beginners</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Jan 10, 2024</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(front-end/images/workshop-3.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Science Experiments Workshop</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Dec 5, 2023</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endif
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Workshop Categories</h3>
-              <ul class="categories">
-                <li><a href="#">Robotics <span>(5)</span></a></li>
-                <li><a href="#">Coding <span>(8)</span></a></li>
-                <li><a href="#">Science <span>(6)</span></a></li>
-                <li><a href="#">Mathematics <span>(4)</span></a></li>
-                <li><a href="#">Engineering <span>(3)</span></a></li>
-              </ul>
-            </div>
+            @if($workshop->tags->count() > 0)
+              <div class="sidebar-box ftco-animate">
+                <h3>Workshop Tags</h3>
+                <ul class="categories">
+                  @foreach($workshop->tags as $tag)
+                    <li><a href="{{ route('workshops', ['tag' => $tag->slug]) }}">{{ $tag->name }}</a></li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
           </div>
 
         </div>

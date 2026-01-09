@@ -65,9 +65,8 @@
             <a class="dropdown-item" href="{{ route('resources.carrier') }}">Carrier Opportunities</a>
             <a class="dropdown-item" href="{{ route('resources.recruit') }}">Adilisha Recruitment Portal</a>
             <a class="dropdown-item" href="{{ route('resources.gallery') }}">Gallery</a>
-            <a class="dropdown-item" href="{{ route('resources.events') }}">Events</a>
-            <a class="dropdown-item" href="{{ route('resources.reports') }}">Reports</a>
-            <a class="dropdown-item" href="{{ route('resources.publications') }}">Publications</a>
+            <a class="dropdown-item" href="{{ route('resources.events') }}">Events & Global Challenges</a>
+            <a class="dropdown-item" href="{{ route('resources.reports') }}">Publications</a>
           </div>
         </li>
 

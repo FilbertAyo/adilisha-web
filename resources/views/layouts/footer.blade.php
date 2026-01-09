@@ -39,45 +39,44 @@
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">Recent Blog</h2>
 
-          <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4"
-               style="background-image: url(front-end/images/image_1.jpg);"></a>
-            <div class="text">
-              <h3 class="heading">
-                <a href="blog-single.html">
-                  Empowering Girls Through STEM Education
-                </a>
-              </h3>
-              <div class="meta">
-                <div>
-                  <a href="#"><span class="icon-calendar"></span> Jan 2026</a>
-                </div>
-                <div>
-                  <a href="#"><span class="icon-person"></span> Adilisha Team</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4"
-               style="background-image: url(front-end/images/image_2.jpg);"></a>
-            <div class="text">
-              <h3 class="heading">
-                <a href="blog-single.html">
-                  Understanding Adilisha Agenda 2049
-                </a>
-              </h3>
-              <div class="meta">
-                <div>
-                  <a href="#"><span class="icon-calendar"></span> Jan 2026</a>
-                </div>
-                <div>
-                  <a href="#"><span class="icon-person"></span> Adilisha Team</a>
+          @forelse($recentBlogs as $blog)
+            <div class="block-21 mb-4 d-flex">
+              <a href="{{ route('blog.show', $blog->slug) }}" class="blog-img mr-4"
+                 style="background-image: url('{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('front-end/images/image_1.jpg') }}');"></a>
+              <div class="text">
+                <h3 class="heading">
+                  <a href="{{ route('blog.show', $blog->slug) }}">
+                    {{ \Illuminate\Support\Str::limit($blog->title, 50) }}
+                  </a>
+                </h3>
+                <div class="meta">
+                  <div>
+                    <a href="#"><span class="icon-calendar"></span> {{ $blog->published_at->format('M Y') }}</a>
+                  </div>
+                  <div>
+                    <a href="#"><span class="icon-person"></span> {{ $blog->author_name }}</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          @empty
+            <div class="block-21 mb-4 d-flex">
+              <a class="blog-img mr-4"
+                 style="background-image: url('{{ asset('front-end/images/image_1.jpg') }}');"></a>
+              <div class="text">
+                <h3 class="heading">
+                  <a href="#">
+                    No recent blog posts
+                  </a>
+                </h3>
+                <div class="meta">
+                  <div>
+                    <a href="#"><span class="icon-calendar"></span> -</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endforelse
 
         </div>
       </div>
@@ -87,12 +86,12 @@
         <div class="ftco-footer-widget mb-4 ml-md-4">
           <h2 class="ftco-heading-2">Quick Links</h2>
           <ul class="list-unstyled">
-            <li><a href="index.html" class="py-2 d-block">Home</a></li>
-            <li><a href="about.html" class="py-2 d-block">About Us</a></li>
-            <li><a href="programs.html" class="py-2 d-block">Programs</a></li>
-            <li><a href="impact.html" class="py-2 d-block">Impact</a></li>
-            <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
-            <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+            <li><a href="{{ route('home') }}" class="py-2 d-block">Home</a></li>
+            <li><a href="{{ route('about-us') }}" class="py-2 d-block">About Us</a></li>
+            <li><a href="{{ route('programs.chomoza') }}" class="py-2 d-block">Programs</a></li>
+            <li><a href="{{ route('impact.stories') }}" class="py-2 d-block">Impact</a></li>
+            <li><a href="{{ route('blog') }}" class="py-2 d-block">Blog</a></li>
+            <li><a href="{{ route('contact') }}" class="py-2 d-block">Contact Us</a></li>
           </ul>
         </div>
       </div>

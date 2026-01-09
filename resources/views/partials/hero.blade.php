@@ -10,14 +10,13 @@
             </p>
 
             <div class="d-flex justify-content-center">
-                <a href="donate.html" class="btn btn-primary px-4 py-3 mr-3" style="min-width: 150px;">
+                <a href="{{ route('donations') }}" class="btn btn-primary px-4 py-3 mr-3" style="min-width: 150px;">
                 Donate
                 </a>
-                <a href="https://vimeo.com/45830194" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo" style="min-width: 150px;">
+                <a href="https://www.youtube.com/watch?v=-X1qxKWnlN0" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo" style="min-width: 150px;">
                   <span class="icon-play mr-2"></span>Watch Video
                 </a>
             </div>
-            
         </div>
         </div>
       </div>

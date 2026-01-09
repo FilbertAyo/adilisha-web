@@ -19,6 +19,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share recent blogs with footer
+        view()->composer('layouts.footer', function ($view) {
+            $recentBlogs = \App\Models\Blog::with(['user', 'team'])
+                ->published()
+                ->latest('published_at')
+                ->take(2)
+                ->get();
+            
+            $view->with('recentBlogs', $recentBlogs);
+        });
     }
 }

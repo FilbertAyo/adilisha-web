@@ -11,79 +11,41 @@
     </div>
 
     <div class="row d-flex">
-
-      <!-- Blog 1 -->
-      <div class="col-md-4 d-flex ftco-animate">
-        <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20"
-             style="background-image: url('front-end/images/image_1.jpg');">
-          </a>
-          <div class="text p-4 d-block">
-            <div class="meta mb-3">
-              <div><a href="#">Jan 2026</a></div>
-              <div><a href="#">Adilisha Team</a></div>
+      @forelse($recentBlogs as $blog)
+        <div class="col-md-4 d-flex ftco-animate">
+          <div class="blog-entry align-self-stretch">
+            <a href="{{ route('blog.show', $blog->slug) }}" class="block-20"
+               style="background-image: url('{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('front-end/images/image_1.jpg') }}');">
+            </a>
+            <div class="text p-4 d-block">
+              <div class="meta mb-3">
+                <div><a href="#">{{ $blog->published_at->format('M Y') }}</a></div>
+                <div><a href="#">{{ $blog->author_name }}</a></div>
+              </div>
+              <h3 class="heading mt-3">
+                <a href="{{ route('blog.show', $blog->slug) }}">
+                  {{ $blog->title }}
+                </a>
+              </h3>
+              <p>
+                {{ $blog->excerpt ?? Str::limit(strip_tags($blog->content), 100) }}
+              </p>
             </div>
-            <h3 class="heading mt-3">
-              <a href="blog-single.html">
-                Empowering Girls Through STEM Education
-              </a>
-            </h3>
-            <p>
-              How hands-on STEM learning is helping girls build confidence,
-              curiosity, and leadership skills in our communities.
-            </p>
           </div>
         </div>
-      </div>
-      
-      <!-- Blog 2 -->
-      <div class="col-md-4 d-flex ftco-animate">
-        <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20"
-             style="background-image: url('front-end/images/image_2.jpg');">
-          </a>
-          <div class="text p-4 d-block">
-            <div class="meta mb-3">
-              <div><a href="#">Jan 2026</a></div>
-              <div><a href="#">Adilisha Team</a></div>
-            </div>
-            <h3 class="heading mt-3">
-              <a href="blog-single.html">
-                STEM Clubs Transforming Learning in Schools
-              </a>
-            </h3>
-            <p>
-              A look at how STEM clubs are encouraging innovation,
-              teamwork, and problem-solving among students.
-            </p>
-          </div>
+      @empty
+        <div class="col-md-12 text-center">
+          <p class="text-muted">No blog posts available yet. Check back soon!</p>
         </div>
-      </div>
-
-      <!-- Blog 3 -->
-      <div class="col-md-4 d-flex ftco-animate">
-        <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20"
-             style="background-image: url('front-end/images/image_3.jpg');">
-          </a>
-          <div class="text p-4 d-block">
-            <div class="meta mb-3">
-              <div><a href="#">Jan 2026</a></div>
-              <div><a href="#">Adilisha Team</a></div>
-            </div>
-            <h3 class="heading mt-3">
-              <a href="blog-single.html">
-                Understanding Adilisha Agenda 2049
-              </a>
-            </h3>
-            <p>
-              Our long-term roadmap to equip millions of children
-              with STEM skills and prepare them for the digital future.
-            </p>
-          </div>
-        </div>
-      </div>
-
+      @endforelse
     </div>
+
+    @if($recentBlogs->count() > 0)
+      <div class="row mt-4">
+        <div class="col text-center">
+          <a href="{{ route('blog') }}" class="btn btn-primary">View All Blog Posts</a>
+        </div>
+      </div>
+    @endif
   </div>
 </section>

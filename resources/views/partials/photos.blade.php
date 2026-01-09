@@ -16,11 +16,13 @@
 @endphp
 
 @if($isGalleryPage || ($isWelcomePage && $galleriesToShow->count() > 0))
+@if(!$isWelcomePage && $galleriesToShow->count() > 0)
   <section class="ftco-section">
     <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section ftco-animate text-center">
           <h2 class="mb-4">
+         
             @if($isGalleryPage && isset($categoryId) && $categoryId)
               @php
                 $selectedCategory = $categories->firstWhere('id', $categoryId);
@@ -33,6 +35,7 @@
             @else
               Our Journey in Pictures
             @endif
+           
           </h2>
           <p>
             @if($isGalleryPage && isset($categoryId) && $categoryId)
@@ -50,20 +53,16 @@
               events that capture the spirit of learning, innovation, and empowerment.
             @endif
           </p>
-          @if($isWelcomePage && $galleriesToShow->count() > 0)
-            <p class="mt-3">
-              <a href="{{ route('resources.gallery') }}" class="btn btn-primary btn-sm">
-                View Full Gallery
-              </a>
-            </p>
-          @endif
+         
         </div>
       </div>
     </div>
   </section>
 
+  @endif
+
   @if($galleriesToShow->count() > 0)
-    <section class="ftco-gallery">
+    <section class="ftco-gallery bg-light">
       @php
         $chunks = $galleriesToShow->chunk(4); // Split into groups of 4
       @endphp

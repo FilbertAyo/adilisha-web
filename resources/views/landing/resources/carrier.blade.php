@@ -35,7 +35,9 @@
 
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 d-flex services p-4 py-4 d-block">
-              <div class="icon d-flex mb-3"><span class="flaticon-donation-1"></span></div>
+            <div class="icon d-flex mb-3">
+            <span class="icon-clock-o text-primary" style="font-size: 50px;"></span>
+          </div>
               <div class="media-body pl-4">
                 <h3 class="heading">Part-Time Positions</h3>
                 <p>Part-time opportunities are available for individuals who wish to contribute to our mission while maintaining flexibility. Ideal for professionals, students, or those seeking to transition into the NGO sector while balancing other commitments.</p>
@@ -45,7 +47,7 @@
 
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 d-flex services p-4 py-4 d-block">
-              <div class="icon d-flex mb-3"><span class="flaticon-donation"></span></div>
+            <div class="icon d-flex mb-3"><span class="flaticon-donation-1"></span></div>
               <div class="media-body pl-4">
                 <h3 class="heading">Volunteer Opportunities</h3>
                 <p>Volunteer positions are open to individuals who want to contribute their time, skills, and passion to our programs. Volunteers play a crucial role in our workshops, events, and community outreach initiatives. No prior experience required—just enthusiasm and commitment.</p>

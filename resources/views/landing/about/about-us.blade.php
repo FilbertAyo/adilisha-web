@@ -58,35 +58,35 @@
 
         <div class="bg-light p-5" style="border-radius: 10px; border-left: 5px solid #0d78b8;">
 
-          <h3 class="mb-4" style="color: #0f2749;">
+          <h3 class="mb-4 text-primary">
             What We Do and Why It Matters
           </h3>
 
-          <p style="color: #4a5562; line-height: 1.8;">
+          <p style="line-height: 1.8;" class="text-justify">
             Many children in underserved communities lack access to quality STEM education,
             limiting their ability to participate in the digital economy. Girls are
             disproportionately affected due to cultural, economic, and systemic barriers.
           </p>
 
-          <p style="color: #4a5562; line-height: 1.8;">
+          <p style="line-height: 1.8;" class="text-justify">
             Adilisha addresses these challenges by introducing STEM learning early, using
             practical tools, experiments, and project-based approaches that make science
             and technology relatable and engaging.
           </p>
 
-          <p style="color: #4a5562; line-height: 1.8;">
+          <p style="line-height: 1.8;" class="text-justify">
             Through flagship initiatives such as <strong>VUTAMDOGO</strong> and
             <strong>CHOMOZA</strong>, we create safe and supportive learning environments
             where students can explore, experiment, and build confidence in their abilities.
           </p>
 
-          <p style="color: #4a5562; line-height: 1.8;">
+          <p style="line-height: 1.8;" class="text-justify">
             Our approach goes beyond students. We support teachers with training,
             curriculum support, and resources, and we actively involve parents and
             communities to ensure sustainability and ownership.
           </p>
 
-          <p class="mb-0" style="color: #4a5562; line-height: 1.8;">
+          <p class="mb-0" style="line-height: 1.8;" class="text-justify">
             By combining education, mentorship, and community collaboration, Adilisha
             is building a generation of problem-solvers, innovators, and leaders prepared
             for the future.
@@ -119,7 +119,7 @@
             To empower children and youth—especially girls—through inclusive, practical STEM education.
           </p>
 
-          <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#missionMore">
+          <a class="btn btn-sm btn-primary mt-2" data-toggle="collapse" href="#missionMore">
             Read more
           </a>
 
@@ -144,7 +144,7 @@
             A future where every child has equal opportunity to learn, innovate, and lead.
           </p>
 
-          <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#visionMore">
+          <a class="btn btn-sm btn-primary mt-2" data-toggle="collapse" href="#visionMore">
             Read more
           </a>
 
@@ -169,7 +169,7 @@
             Equity, innovation, accountability, and community collaboration.
           </p>
 
-          <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#valuesMore">
+          <a class="btn btn-sm btn-primary mt-2" data-toggle="collapse" href="#valuesMore">
             Read more
           </a>
 

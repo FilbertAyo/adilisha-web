@@ -22,7 +22,7 @@
 
         <div class="col-md-6 ftco-animate">
           <div class="img img-about align-self-stretch rounded"
-               style="background-image: url({{ asset('front-end/images/chomoza.jpg') }}); width: 100%; height: 100%; min-height: 420px;">
+               style="background-image: url({{ asset('front-end/images/agenda1.jpg') }}); width: 100%; height: 100%; min-height: 420px;">
           </div>
         </div>
 
@@ -58,10 +58,12 @@
       </div>
 
       <div class="row">
-        
+        <!-- Coding & Programming -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-donation-1"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-laptop text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Coding & Programming</h3>
               <p>
@@ -72,9 +74,12 @@
           </div>      
         </div>
 
+        <!-- Robotics & Engineering -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-charity"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-cogs text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Robotics & Engineering</h3>
               <p>
@@ -85,9 +90,12 @@
           </div>      
         </div>
 
+        <!-- Innovation Labs -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-donation"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-lightbulb-o text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Innovation Labs</h3>
               <p>
@@ -98,9 +106,12 @@
           </div>    
         </div>
 
+        <!-- Mentorship Programs -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-volunteer"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-users text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Mentorship Programs</h3>
               <p>
@@ -111,9 +122,12 @@
           </div>      
         </div>
 
+        <!-- Leadership Training -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-solidarity"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-graduation-cap text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Leadership Training</h3>
               <p>
@@ -124,9 +138,12 @@
           </div>      
         </div>
 
+        <!-- Competitions & Showcases -->
         <div class="col-md-4 d-flex ftco-animate">
-          <div class="media block-6 services p-4 py-md-5 d-block text-center">
-            <div class="icon d-flex mb-3 justify-content-center"><span class="flaticon-care"></span></div>
+          <div class="card media block-6 services p-4 py-md-5 d-block text-center">
+            <div class="icon d-flex mb-3 justify-content-center">
+              <span class="icon-trophy text-primary" style="font-size: 50px;"></span>
+            </div>
             <div class="media-body">
               <h3 class="heading">Competitions & Showcases</h3>
               <p>
@@ -136,66 +153,16 @@
             </div>
           </div>    
         </div>
-
+        
       </div>
     </div>
   </section>
 
-  <section class="ftco-section">
-    <div class="container">
-      <div class="row justify-content-center mb-5">
-        <div class="col-md-8 text-center ftco-animate">
-          <h2 class="mb-4">Program Impact</h2>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-3 text-center ftco-animate">
-          <div class="counter-wrap">
-            <div class="text">
-              <span class="counter" data-number="2500">0</span>
-              <span>+</span>
-            </div>
-            <p>Students Trained</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 text-center ftco-animate">
-          <div class="counter-wrap">
-            <div class="text">
-              <span class="counter" data-number="85">0</span>
-              <span>+</span>
-            </div>
-            <p>Schools Reached</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 text-center ftco-animate">
-          <div class="counter-wrap">
-            <div class="text">
-              <span class="counter" data-number="150">0</span>
-              <span>+</span>
-            </div>
-            <p>Innovation Projects</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 text-center ftco-animate">
-          <div class="counter-wrap">
-            <div class="text">
-              <span class="counter" data-number="60">0</span>
-              <span>%</span>
-            </div>
-            <p>Girls Participation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   @include('partials.actions')
 
-  <section class="ftco-section bg-light">
+  <section class="ftco-section">
     <div class="container">
       <div class="row justify-content-center mb-5">
         <div class="col-md-8 text-center ftco-animate">
@@ -207,10 +174,9 @@
       <div class="row">
         <div class="col-md-6 ftco-animate">
           <div class="cause-entry bg-white p-4 mb-4">
-            <h3>National Robotics Competition Winners</h3>
+            <h3>More Girls Interested in Science</h3>
             <p>
-              CHOMOZA students won 1st place in the Tanzania Schools Robotics Challenge 
-              2024 with their water purification robot prototype.
+              Participation in CHOMOZA has led to a significant increase in the number of girls showing interest in science subjects and STEM activities, both in and out of school.
             </p>
           </div>
         </div>
