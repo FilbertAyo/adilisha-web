@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('gallery_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable()->constrained('gallery_categories')->onDelete('set null');
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('order')->default(0);

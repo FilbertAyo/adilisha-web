@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->nullable()->constrained()->onDelete('set null');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
@@ -21,6 +22,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
+            $table->string('custom_author_name')->nullable();
+            $table->string('custom_author_position')->nullable();
+             
+             
             $table->timestamps();
         });
     }

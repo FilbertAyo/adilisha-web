@@ -19,13 +19,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Share recent blogs with footer
+        // Enable query string caching for pagination
+        \Illuminate\Pagination\Paginator::useBootstrap();
+        
+        // Share recent blogs with footer (cached)
         view()->composer('layouts.footer', function ($view) {
-            $recentBlogs = \App\Models\Blog::with(['user', 'team'])
-                ->published()
-                ->latest('published_at')
-                ->take(2)
-                ->get();
+            $recentBlogs = \Illuminate\Support\Facades\Cache::remember('footer.recent_blogs', 3600, function () {
+                return \App\Models\Blog::with(['user', 'team'])
+                    ->published()
+                    ->latest('published_at')
+                    ->take(2)
+                    ->get();
+            });
             
             $view->with('recentBlogs', $recentBlogs);
         });

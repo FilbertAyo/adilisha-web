@@ -31,14 +31,27 @@ class BlogController extends Controller
             ->published()
             ->firstOrFail();
             
-        // Get recent blogs for sidebar
-        $recentBlogs = Blog::with(['user', 'team'])
-            ->published()
-            ->where('id', '!=', $blog->id)
-            ->latest('published_at')
-            ->take(3)
-            ->get();
+        // Get recent blogs for sidebar (cached)
+        $recentBlogs = \Illuminate\Support\Facades\Cache::remember('blog.recent_sidebar', 1800, function () use ($blog) {
+            return Blog::with(['user', 'team'])
+                ->published()
+                ->where('id', '!=', $blog->id)
+                ->latest('published_at')
+                ->take(3)
+                ->get();
+        });
+        
+        // SEO data for blog post
+        $seoMeta = [
+            'title' => $blog->title . ' - ' . config('app.name'),
+            'description' => $blog->excerpt ?? strip_tags(substr($blog->content, 0, 160)),
+            'image' => $blog->featured_image ? asset('storage/' . $blog->featured_image) : null,
+            'type' => 'article',
+        ];
+        
+        // Structured data for article
+        $structuredData = \App\Services\SeoService::getArticleSchema($blog);
             
-        return view('landing.blog.view', compact('blog', 'recentBlogs'));
+        return view('landing.blog.view', compact('blog', 'recentBlogs', 'seoMeta', 'structuredData'));
     }
 }

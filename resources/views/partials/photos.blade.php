@@ -72,7 +72,8 @@
             <a href="{{ asset('storage/' . $gallery->image_path) }}" 
                class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" 
                style="background-image: url('{{ asset('storage/' . $gallery->image_path) }}');"
-               title="{{ $gallery->title ?? 'Gallery Image' }}">
+               title="{{ $gallery->title ?? 'Gallery Image' }}"
+               loading="lazy">
               <div class="icon d-flex justify-content-center align-items-center">
                 <span class="icon-search"></span>
               </div>

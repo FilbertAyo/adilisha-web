@@ -1,18 +1,40 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RobotsController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
+// SEO Routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [RobotsController::class, 'index'])->name('robots');
+
 Route::get('/', function () {
-    // Get a few recent gallery images for the welcome page
-    $featuredGalleries = \App\Models\Gallery::with('category')->active()->ordered()->take(8)->get();
-    // Get recent published blogs
-    $recentBlogs = \App\Models\Blog::with('user')->published()->latest('published_at')->take(3)->get();
-    // Get latest 3 upcoming events for homepage
-    $events = \App\Models\Event::visible()->upcoming()->orderBy('event_date', 'asc')->take(3)->get();
-    // Get 4 featured success stories for homepage
-    $stories = \App\Models\Story::published()->ordered()->take(4)->get();
-    return view('welcome', compact('featuredGalleries', 'recentBlogs', 'events', 'stories'));
+    // Cache homepage data for 30 minutes
+    $featuredGalleries = \Illuminate\Support\Facades\Cache::remember('home.galleries', 1800, function () {
+        return \App\Models\Gallery::with('category')->active()->ordered()->take(8)->get();
+    });
+    
+    $recentBlogs = \Illuminate\Support\Facades\Cache::remember('home.blogs', 1800, function () {
+        return \App\Models\Blog::with('user')->published()->latest('published_at')->take(3)->get();
+    });
+    
+    $events = \Illuminate\Support\Facades\Cache::remember('home.events', 1800, function () {
+        return \App\Models\Event::visible()->upcoming()->orderBy('event_date', 'asc')->take(3)->get();
+    });
+    
+    $stories = \Illuminate\Support\Facades\Cache::remember('home.stories', 1800, function () {
+        return \App\Models\Story::published()->ordered()->take(4)->get();
+    });
+    
+    // SEO data for homepage
+    $seoMeta = [
+        'title' => config('app.name') . ' - Empowering Youth Through STEM Education in Tanzania',
+        'description' => 'Join Adilisha in empowering children—especially girls—with practical STEM skills through our VUTAMDOGO and CHOMOZA programs. Building a gender-neutral future in technology.',
+        'keywords' => 'STEM education Tanzania, girls in STEM, youth empowerment, VUTAMDOGO, CHOMOZA, technology education, child development NGO',
+    ];
+    
+    return view('welcome', compact('featuredGalleries', 'recentBlogs', 'events', 'stories', 'seoMeta'));
 })->name('home');
 
 Route::get('/contact', function () {

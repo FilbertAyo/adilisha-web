@@ -8,6 +8,8 @@
 
     <title>{{ config('app.name', 'Adilisha') }}</title>
 
+    <link rel="icon" type="image/svg+xml" href="{{ asset('front-end/images/logo/favicon.svg') }}">
+
     <link rel="icon" href="{{ asset('images/logo/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('published_date')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->integer('download_count')->default(0);
+            $table->string('thumbnail_path')->nullable();
             $table->timestamps();
         });
     }

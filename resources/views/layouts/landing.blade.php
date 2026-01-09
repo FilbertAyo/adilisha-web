@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>{{ config('app.name', 'Adilisha Youth and Child Development Organization') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    {{-- SEO Meta Tags --}}
+    <x-seo :meta="$seoMeta ?? []" />
+    
+    {{-- Structured Data --}}
+    <x-structured-data :schema="\App\Services\SeoService::getOrganizationSchema()" />
+    @isset($structuredData)
+        <x-structured-data :schema="$structuredData" />
+    @endisset
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('front-end/images/logo/favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('front-end/images/logo/favicon.svg') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
