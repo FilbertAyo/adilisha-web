@@ -1,0 +1,97 @@
+<x-landing-layout>
+
+    <div class="hero-wrap2" style="background-image: url('front-end/images/hero_bg.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Contact</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="ftco-section contact-section ftco-degree-bg">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-12 mb-4">
+                    <h2 class="h4">Contact Information</h2>
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span>Address:</span><br>
+                        Bondeni Street, Mwanza, Tanzania
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span>Phone:</span><br>
+                        <a href="tel:+255282561724">+255 28 256 1724</a>
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span>Email:</span><br>
+                        <a href="mailto:info@adilisha.or.tz">info@adilisha.or.tz</a>
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <p>
+                        <span>Open Hours:</span><br>
+                        Mon – Sat: 08:00 AM – 05:00 PM
+                    </p>
+                </div>
+            </div>
+
+            <div class="row block-9">
+                <!-- Contact Form -->
+                <div class="col-md-6 pr-md-5">
+                    <h4 class="mb-4">Connect With Adilisha</h4>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="7" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Map Column -->
+                <div class="col-md-6">
+                    <div class="map-wrap mb-5">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.028861059142!2d32.89901417575713!3d-2.497376797481241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19ce7b9bb66764f1%3A0x5be3a3a8049dc0fb!2sAdilisha%20CHOMOZA%20S.T.E.M%20Labs!5e0!3m2!1sen!2stz!4v1767868313149!5m2!1sen!2stz"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</x-landing-layout>
