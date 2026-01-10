@@ -210,25 +210,6 @@
         </div>
     </section>
 
-    <section class="ftco-section bg-primary">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8 mb-4">
-                    <h2 class="mb-3 text-white">Support Tanzania's STEM Future</h2>
-                    <ul class="list-unstyled text-white text-justify">
-                        <li class="mb-2">Help us bring STEM clubs & labs to every school.</li>
-                        <li class="mb-2">Empower girls and youth for tomorrow's jobs.</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 d-flex justify-content-center">
-                    <div class="bg-primary text-white text-center p-4 rounded shadow">
-                        <h4 class="mb-3 text-white">Join Our Movement</h4>
-                        <p>Spread the word, or partner with us.</p>
-                        <a href="{{ route('partnership') }}" class="btn btn-light text-primary font-weight-bold mt-2">Get Involved</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
 </x-landing-layout>

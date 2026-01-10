@@ -55,28 +55,7 @@
                 </div>
               </div>
 
-              <div class="mt-5">
-                <h4 class="mb-4 text-primary">Alternative Ways to Connect</h4>
-                <div class="row text-left">
-                  <div class="col-md-6 mb-3">
-                    <p class="text-justify">
-                      <strong class='text-primary'>General Inquiries:</strong><br>
-                      Contact us through our main contact channels for general information about our organization and future opportunities.
-                    </p>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <p class="text-justify">
-                      <strong  class='text-primary'>Partnerships:</strong><br>
-                      If you're interested in partnering with us, please visit our <a href="{{ route('partnership') }}" class="text-primary">Partnership</a> page.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-5 pt-4">
-                <a href="{{ route('home') }}" class="btn btn-primary py-3 px-5 mr-3">Return to Home</a>
-                <a href="{{ route('resources.carrier') }}" class="btn btn-outline-primary py-3 px-5">Learn About Careers</a>
-              </div>
+          
             </div>
           </div>
         </div>

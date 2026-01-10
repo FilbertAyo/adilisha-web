@@ -94,4 +94,25 @@
     </section>
 
 
+    <section class="ftco-section bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center ftco-animate">
+          <h3 class="mb-4">Subscribe to Our Mailing List</h3>
+          <p>
+            Get the latest publications, research findings, and resources delivered 
+            directly to your inbox.
+          </p>
+          <form action="#" class="subscribe-form mt-4">
+            <div class="form-group d-flex">
+              <input type="email" class="form-control" placeholder="Enter your email address" required>
+              <button type="submit" class="btn btn-primary px-4">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 </x-landing-layout>
