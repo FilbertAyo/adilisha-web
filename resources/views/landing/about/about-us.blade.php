@@ -30,7 +30,7 @@
         <h2 class="mb-4">Who We Are</h2>
 
         <p>
-          Adilisha Youth and Child Development Organization is a Tanzania-based NGO
+          Adilisha Child and Youth Development Organization is a Tanzania-based NGO
           dedicated to empowering children and youth—especially girls—through
           inclusive STEM education and leadership development.
         </p>

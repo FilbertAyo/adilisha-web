@@ -9,7 +9,7 @@
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">About Adilisha</h2>
           <p>
-            Adilisha Youth and Child Development Organization empowers children,
+            Adilisha Child and Youth Development Organization empowers children,
             especially girls, to thrive in STEM education through hands-on learning,
             leadership, and community-driven programs guided by Agenda 2049.
           </p>
@@ -139,7 +139,7 @@
         <p class="mb-0">
           &copy;
           <script>document.write(new Date().getFullYear());</script>
-          Adilisha Youth and Child Development Organization. All Rights Reserved.
+          Adilisha Child and Youth Development Organization. All Rights Reserved.
         </p>
       </div>
     </div>

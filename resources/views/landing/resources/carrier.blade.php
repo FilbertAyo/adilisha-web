@@ -17,7 +17,7 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
             <h2 class="mb-4">Join Our Mission</h2>
-            <p>Adilisha Youth and Child Development Organization offers diverse career opportunities for passionate individuals committed to empowering Tanzanian youth through STEM education. We welcome dedicated professionals, educators, and volunteers who share our vision of creating equal opportunities in technology and innovation.</p>
+            <p>Adilisha Child and Youth Development Organization offers diverse career opportunities for passionate individuals committed to empowering Tanzanian youth through STEM education. We welcome dedicated professionals, educators, and volunteers who share our vision of creating equal opportunities in technology and innovation.</p>
           </div>
         </div>
 

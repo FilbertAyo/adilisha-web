@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin Login - {{ config('app.name', 'Adilisha Youth and Child Development Organization') }}</title>
+    <title>Admin Login - {{ config('app.name', 'Adilisha Child and Youth Development Organization') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="{{ asset('front-end/images/logo/favicon.svg') }}">

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Adilisha Youth and Child Development Organization'),
+    'name' => env('APP_NAME', 'Adilisha Child and Youth Development Organization'),
 
     /*
     |--------------------------------------------------------------------------

@@ -11,7 +11,7 @@ class SeoService
     {
         $defaults = [
             'title' => config('app.name') . ' - Empowering Youth Through STEM Education',
-            'description' => 'Adilisha Youth and Child Development Organization is a Tanzania-based NGO empowering children—especially girls—to succeed in STEM education and leadership.',
+            'description' => 'Adilisha Child and Youth Development Organization is a Tanzania-based NGO empowering children—especially girls—to succeed in STEM education and leadership.',
             'keywords' => 'STEM education, Tanzania NGO, youth empowerment, girls in STEM, VUTAMDOGO, CHOMOZA, technology education, child development',
             'image' => asset('front-end/images/logo/favicon.svg'),
             'url' => url()->current(),
