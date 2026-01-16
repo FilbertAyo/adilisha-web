@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Empowering Girls to Lead the Future Through STEM</h1>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Empowering Girls through access to Quality STEM Education</h1>
             <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
             Adilisha empowers children especially girls in underserved communities to succeed in STEM
             through hands on learning and leadership under the Adilisha Agenda 2049.
