@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center ftco-animate">
                     <div class="error-page-wrap">
-                        <h1 class="display-1 mb-4" style="font-size: 8rem; font-weight: 700; color: #F96D00;">419</h1>
+                        <h1 class="display-1 mb-4" style="font-size: 8rem; font-weight: 700; color: #126cbf;">419</h1>
                         <h2 class="mb-4">Page Expired</h2>
                         <p class="mb-4">Your session has expired due to inactivity. Please refresh the page and try again.</p>
                         <p>

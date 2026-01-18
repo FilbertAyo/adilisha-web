@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
@@ -54,6 +55,10 @@ class TeamController extends Controller
             'profile_image' => $profileImagePath,
         ]);
 
+        // Clear cache
+        Cache::forget('teams_active');
+        Cache::forget('boards_active');
+
         return response()->json([
             'success' => true,
             'message' => 'Team member created successfully.',
@@ -99,6 +104,10 @@ class TeamController extends Controller
 
         $team->save();
 
+        // Clear cache
+        Cache::forget('teams_active');
+        Cache::forget('boards_active');
+
         return response()->json([
             'success' => true,
             'message' => 'Team member updated successfully.',
@@ -112,6 +121,10 @@ class TeamController extends Controller
     public function deactivate(Team $team)
     {
         $team->delete();
+
+        // Clear cache
+        Cache::forget('teams_active');
+        Cache::forget('boards_active');
 
         return response()->json([
             'success' => true,

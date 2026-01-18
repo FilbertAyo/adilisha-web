@@ -1,5 +1,14 @@
 <x-landing-layout>
-    
+    @push('head')
+        @if($teams->isNotEmpty() && $teams->take(3)->filter(fn($t) => $t->profile_image)->isNotEmpty())
+            @foreach($teams->take(3) as $team)
+                @if($team->profile_image)
+                    <link rel="preload" as="image" href="{{ asset('storage/' . $team->profile_image) }}">
+                @endif
+            @endforeach
+        @endif
+    @endpush
+
     <div class="hero-wrap2" style="background-image: url('front-end/images/hero_bg.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -25,7 +34,16 @@
           @forelse($teams as $team)
             <div class="col-lg-4 col-md-6 d-flex mb-4 ftco-animate">
               <div class="staff w-100">
-                <div class="img mb-4" style="background-image: url('{{ $team->profile_image ? asset('storage/' . $team->profile_image) : asset('front-end/images/person_1.jpg') }}'); background-size: cover; background-position: center; aspect-ratio: 1/1;"></div>
+                <div class="img mb-4" style="position: relative; overflow: hidden; aspect-ratio: 1/1; background-color: #f8f9fa;">
+                  <img 
+                    src="{{ $team->profile_image ? asset('storage/' . $team->profile_image) : asset('front-end/images/person_1.jpg') }}" 
+                    alt="{{ $team->name }}"
+                    loading="lazy"
+                    data-fallback="{{ asset('front-end/images/person_1.jpg') }}"
+                    class="team-profile-img"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0;"
+                  >
+                </div>
                 <div class="info text-center">
                   <h3><a href="#">{{ $team->name }}</a></h3>
                   <span class="position">{{ $team->position }}</span>

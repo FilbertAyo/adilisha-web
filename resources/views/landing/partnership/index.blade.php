@@ -198,35 +198,7 @@
     						</select>
     					</div>
     					
-    					<!-- Project Focus Section -->
-    					<h4 class="mt-5 mb-3" style="color: rgba(255,255,255,.9); border-bottom: 2px solid rgba(255,255,255,.3); padding-bottom: 10px;">Project Focus</h4>
-    					
-    					<div class="form-group">
-    						<label style="color: rgba(255,255,255,.9); margin-bottom: 8px; display: block;">Which Programs Interest You? (Select all that apply)</label>
-    						<div style="color: rgba(255,255,255,.9);">
-    							<div class="form-check mb-2">
-    								<input class="form-check-input" type="checkbox" id="vutamdogo" name="programs[]" value="vutamdogo" style="margin-right: 8px;">
-    								<label class="form-check-label" for="vutamdogo" style="color: rgba(255,255,255,.9);">VUTAMDOGO STEM Project</label>
-    							</div>
-    							<div class="form-check mb-2">
-    								<input class="form-check-input" type="checkbox" id="chomoza" name="programs[]" value="chomoza" style="margin-right: 8px;">
-    								<label class="form-check-label" for="chomoza" style="color: rgba(255,255,255,.9);">CHOMOZA STEM Project</label>
-    							</div>
-    							<div class="form-check mb-2">
-    								<input class="form-check-input" type="checkbox" id="workshops" name="programs[]" value="workshops" style="margin-right: 8px;">
-    								<label class="form-check-label" for="workshops" style="color: rgba(255,255,255,.9);">STEM Workshops</label>
-    							</div>
-    							<div class="form-check mb-2">
-    								<input class="form-check-input" type="checkbox" id="agenda2049" name="programs[]" value="agenda2049" style="margin-right: 8px;">
-    								<label class="form-check-label" for="agenda2049" style="color: rgba(255,255,255,.9);">Adilisha Agenda 2049</label>
-    							</div>
-    							<div class="form-check mb-2">
-    								<input class="form-check-input" type="checkbox" id="all" name="programs[]" value="all" style="margin-right: 8px;">
-    								<label class="form-check-label" for="all" style="color: rgba(255,255,255,.9);">All Programs</label>
-    							</div>
-    						</div>
-    					</div>
-    					
+    				
     					<!-- Additional Information Section -->
     					<h4 class="mt-5 mb-3" style="color: rgba(255,255,255,.9); border-bottom: 2px solid rgba(255,255,255,.3); padding-bottom: 10px;">Additional Information</h4>
     					
@@ -252,7 +224,7 @@
     							<option value="Phone">Phone Call</option>
     							<option value="WhatsApp">WhatsApp</option>
     							<option value="Meeting">In-person Meeting</option>
-    							<option value="Video">Video Call</option>
+    							<option value="Video">Virtual Meeting</option>
     						</select>
     					</div>
     					

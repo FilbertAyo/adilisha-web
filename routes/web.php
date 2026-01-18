@@ -46,12 +46,16 @@ Route::get('/about-us', function () {
 })->name('about-us');
 
 Route::get('/our-team', function () {
-    $teams = \App\Models\Team::active()->teamMembers()->ordered()->get();
+    $teams = \Illuminate\Support\Facades\Cache::remember('teams_active', 3600, function () {
+        return \App\Models\Team::active()->teamMembers()->ordered()->get();
+    });
     return view('landing.about.team', compact('teams'));
 })->name('our-team');
 
 Route::get('/board-of-directors', function () {
-    $boards = \App\Models\Team::active()->boardMembers()->ordered()->get();
+    $boards = \Illuminate\Support\Facades\Cache::remember('boards_active', 3600, function () {
+        return \App\Models\Team::active()->boardMembers()->ordered()->get();
+    });
     return view('landing.about.board', compact('boards'));
 })->name('board-of-directors');
 

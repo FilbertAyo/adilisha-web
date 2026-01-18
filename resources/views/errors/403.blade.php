@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center ftco-animate">
                     <div class="error-page-wrap">
-                        <h1 class="display-1 mb-4" style="font-size: 8rem; font-weight: 700; color: #F96D00;">403</h1>
+                        <h1 class="display-1 mb-4" style="font-size: 8rem; font-weight: 700; color: #126cbf;">403</h1>
                         <h2 class="mb-4">Forbidden</h2>
                         <p class="mb-4">You don't have permission to access this resource. Please contact the administrator if you believe this is an error.</p>
                         <p>
