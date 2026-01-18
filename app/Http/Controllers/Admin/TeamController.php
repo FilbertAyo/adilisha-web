@@ -27,6 +27,7 @@ class TeamController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'in:team,board'],
             'instagram' => ['nullable', 'string', 'max:255'],
             'linkedin' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
@@ -44,6 +45,7 @@ class TeamController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'] ?? null,
             'position' => $validated['position'],
+            'type' => $validated['type'],
             'instagram' => $validated['instagram'] ?? null,
             'linkedin' => $validated['linkedin'] ?? null,
             'description' => $validated['description'] ?? null,
@@ -68,6 +70,7 @@ class TeamController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'in:team,board'],
             'instagram' => ['nullable', 'string', 'max:255'],
             'linkedin' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
@@ -79,6 +82,7 @@ class TeamController extends Controller
         $team->name = $validated['name'];
         $team->email = $validated['email'] ?? null;
         $team->position = $validated['position'];
+        $team->type = $validated['type'];
         $team->instagram = $validated['instagram'] ?? null;
         $team->linkedin = $validated['linkedin'] ?? null;
         $team->description = $validated['description'] ?? null;

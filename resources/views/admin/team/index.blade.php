@@ -22,6 +22,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Position</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -41,6 +42,13 @@
                                         <td>{{ $team->name }}</td>
                                         <td>{{ $team->email ?? 'N/A' }}</td>
                                         <td>{{ $team->position }}</td>
+                                        <td>
+                                            @if($team->type === 'board')
+                                                <span class="badge bg-primary">Board</span>
+                                            @else
+                                                <span class="badge bg-info">Team</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($team->active)
                                                 <span class="badge bg-success">Active</span>
@@ -65,7 +73,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="text-center">No team members found</td>
+                                        <td colspan="8" class="text-center">No team members found</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -105,6 +113,16 @@
                                 <input type="text" class="form-control" id="create_position" name="position" required>
                                 <div class="invalid-feedback"></div>
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="create_type" class="form-label">Type <span class="text-danger">*</span></label>
+                                <select class="form-control" id="create_type" name="type" required>
+                                    <option value="team">Team Member</option>
+                                    <option value="board">Board of Directors</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="create_order" class="form-label">Order Number <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" id="create_order" name="order" min="0" value="0" required>
@@ -183,6 +201,16 @@
                                 <input type="text" class="form-control" id="edit_position" name="position" required>
                                 <div class="invalid-feedback"></div>
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="edit_type" class="form-label">Type <span class="text-danger">*</span></label>
+                                <select class="form-control" id="edit_type" name="type" required>
+                                    <option value="team">Team Member</option>
+                                    <option value="board">Board of Directors</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="edit_order" class="form-label">Order Number <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" id="edit_order" name="order" min="0" required>
@@ -318,6 +346,7 @@
             document.getElementById('edit_name').value = team.name;
             document.getElementById('edit_email').value = team.email || '';
             document.getElementById('edit_position').value = team.position;
+            document.getElementById('edit_type').value = team.type || 'team';
             document.getElementById('edit_order').value = team.order;
             document.getElementById('edit_instagram').value = team.instagram || '';
             document.getElementById('edit_linkedin').value = team.linkedin || '';

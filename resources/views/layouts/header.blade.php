@@ -23,6 +23,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdown-who">
             <a class="dropdown-item" href="{{ route('about-us') }}">About Adilisha</a>
+            <a class="dropdown-item" href="{{ route('board-of-directors') }}">Board of Directors</a>
             <a class="dropdown-item" href="{{ route('our-team') }}">Our Team</a>
             <a class="dropdown-item" href="{{ route('agenda-2049') }}">Adilisha Agenda 2049</a>
             <a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a>
@@ -38,20 +39,12 @@
           <div class="dropdown-menu" aria-labelledby="dropdown-what">
             <a class="dropdown-item" href="{{ route('programs.chomoza') }}">CHOMOZA STEM Project</a>
             <a class="dropdown-item" href="{{ route('workshops') }}">STEM Workshops</a>
+            <a class="dropdown-item" href="{{ route('impact.stories') }}">Success Stories</a>
+            <!-- <a class="dropdown-item" href="{{ route('impact.feedback') }}">Beneficiaries Feedback</a> -->
           </div>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-             id="dropdown-impact" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            Impact
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdown-impact">
-            <a class="dropdown-item" href="{{ route('impact.stories') }}">Success Stories</a>
-            <a class="dropdown-item" href="{{ route('impact.feedback') }}">Beneficiaries Feedback</a>
-          </div>
-        </li>
+       
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="javascript:void(0)"
@@ -62,7 +55,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdown-resources">
             <a class="dropdown-item" href="{{ route('blog') }}"><strong>Blog</strong></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ route('resources.carrier') }}">Career Opportunities</a>
+            <!-- <a class="dropdown-item" href="{{ route('resources.carrier') }}">Career Opportunities</a> -->
             <a class="dropdown-item" href="{{ route('resources.recruit') }}">Recruitment Portal</a>
             <a class="dropdown-item" href="{{ route('resources.gallery') }}">Gallery</a>
             <a class="dropdown-item" href="{{ route('resources.events') }}">Events & Global Challenges</a>

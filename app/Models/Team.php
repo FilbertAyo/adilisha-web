@@ -13,6 +13,7 @@ class Team extends Model
         'name',
         'email',
         'position',
+        'type',
         'instagram',
         'linkedin',
         'description',
@@ -40,5 +41,29 @@ class Team extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('order', 'asc');
+    }
+
+    /**
+     * Scope a query to filter by type.
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
+    /**
+     * Scope a query to only include team members (not board).
+     */
+    public function scopeTeamMembers($query)
+    {
+        return $query->where('type', 'team');
+    }
+
+    /**
+     * Scope a query to only include board members.
+     */
+    public function scopeBoardMembers($query)
+    {
+        return $query->where('type', 'board');
     }
 }

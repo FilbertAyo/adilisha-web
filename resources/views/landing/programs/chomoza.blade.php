@@ -178,25 +178,6 @@
           </div>
         </div>
 
-        <div class="col-md-6 ftco-animate">
-          <div class="cause-entry bg-white p-4 mb-4">
-            <h3>University Scholarships</h3>
-            <p>
-              Over 40 CHOMOZA alumni have secured scholarships to pursue STEM degrees 
-              at universities in Tanzania and internationally.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-6 ftco-animate">
-          <div class="cause-entry bg-white p-4 mb-4">
-            <h3>Community Solutions</h3>
-            <p>
-              Students developed mobile apps and IoT devices addressing local challenges 
-              like agriculture, health, and education access.
-            </p>
-          </div>
-        </div>
 
         <div class="col-md-6 ftco-animate">
           <div class="cause-entry bg-white p-4 mb-4">

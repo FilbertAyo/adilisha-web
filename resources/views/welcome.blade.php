@@ -45,17 +45,14 @@
 
 
 
-@include('partials.mission')
 
-   @include('partials.areas')
+   
 
   @include('partials.story')
 
-  @include('partials.photos')
 
-  @include('partials.blogs')
 
-  <section class="ftco-section bg-primary">
+  <!-- <section class="ftco-section bg-primary">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-8 ftco-animate">
@@ -73,10 +70,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-   @include('partials.events_list')
-
-   
+  @include('partials.areas')
 
 </x-landing-layout>

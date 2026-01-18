@@ -3,7 +3,7 @@
             <div class="row no-gutters">
 
                 <!-- Impact / Agenda 2049 -->
-                <div class="col-md-5 d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 color-3 align-items-stretch">
                         <div class="text text-white">
                             <span class="text-white">Adilisha Agenda 2049</span>
@@ -25,16 +25,6 @@
                     </div>
                 </div>
 
-                <!-- Volunteer -->
-                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-                    <div class="block-18 color-2 align-items-stretch">
-                        <div class="text">
-                            <h3 class="mb-4">Support Our Movement</h3>
-                            <p>Partner with us to expand opportunity and impact, Join the Adilisha Movement for a brighter, STEM-powered future.</p>
-                            <p><a href="{{ route('partnership') }}" class="btn btn-white px-3 py-2 mt-2">Partner With Us</a></p>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>

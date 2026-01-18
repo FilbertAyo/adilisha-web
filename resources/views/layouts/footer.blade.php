@@ -9,9 +9,7 @@
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">About Adilisha</h2>
           <p>
-            Adilisha Child and Youth Development Organization empowers children,
-            especially girls, to thrive in STEM education through hands-on learning,
-            leadership, and community-driven programs guided by Agenda 2049.
+            Adilisha empowers youth, especially girls, to thrive in STEM through hands-on learning and leadership.
           </p>
 
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
@@ -86,12 +84,10 @@
         <div class="ftco-footer-widget mb-4 ml-md-4">
           <h2 class="ftco-heading-2">Quick Links</h2>
           <ul class="list-unstyled">
-            <li><a href="{{ route('home') }}" class="py-2 d-block">Home</a></li>
+          <li><a href="https://adilishastemlabs.com/" target="_blank" rel="noopener" class="py-2 d-block">STEM Labs</a></li>
             <li><a href="{{ route('about-us') }}" class="py-2 d-block">About Us</a></li>
             <li><a href="{{ route('programs.chomoza') }}" class="py-2 d-block">Programs</a></li>
-            <li><a href="{{ route('impact.stories') }}" class="py-2 d-block">Impact</a></li>
-            <li><a href="{{ route('blog') }}" class="py-2 d-block">Blog</a></li>
-            <li><a href="{{ route('contact') }}" class="py-2 d-block">Contact Us</a></li>
+            <li><a href="{{ route('impact.stories') }}" class="py-2 d-block">Impact</a></li> 
           </ul>
         </div>
       </div>
@@ -121,10 +117,7 @@
                   <span class="text">info@adilisha.or.tz</span>
                 </a>
               </li>
-              <li>
-                <span class="icon icon-clock-o"></span>
-                <span class="text">Mon – Sat: 08:00 AM – 05:00 PM</span>
-              </li>
+             
             </ul>
           </div>
 

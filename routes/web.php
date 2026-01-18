@@ -46,9 +46,14 @@ Route::get('/about-us', function () {
 })->name('about-us');
 
 Route::get('/our-team', function () {
-    $teams = \App\Models\Team::active()->ordered()->get();
+    $teams = \App\Models\Team::active()->teamMembers()->ordered()->get();
     return view('landing.about.team', compact('teams'));
 })->name('our-team');
+
+Route::get('/board-of-directors', function () {
+    $boards = \App\Models\Team::active()->boardMembers()->ordered()->get();
+    return view('landing.about.board', compact('boards'));
+})->name('board-of-directors');
 
 Route::get('/agenda-2049', function () {
     return view('landing.about.agenda');

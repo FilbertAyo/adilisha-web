@@ -107,7 +107,7 @@
         </div>
     </section>
 
-    <section class="ftco-section">
+    <!-- <section class="ftco-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 ftco-animate">
@@ -116,7 +116,7 @@
 
                     <div class="row mt-5">
 
-                        <!-- Phase 1 -->
+                      
                         <div class="col-md-4 mb-4">
                             <div class="services p-4 h-100 bg-white shadow-sm rounded">
                                 <div class="icon mb-3 text-primary">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
 
-                        <!-- Phase 2 -->
+                      
                         <div class="col-md-4 mb-4">
                             <div class="services p-4 h-100 bg-white shadow-sm rounded">
                                 <div class="icon mb-3 text-primary">
@@ -148,7 +148,7 @@
                             </div>
                         </div>
 
-                        <!-- Phase 3 -->
+                    
                         <div class="col-md-4 mb-4">
                             <div class="services p-4 h-100 bg-white shadow-sm rounded">
                                 <div class="icon mb-3 text-primary">
@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="ftco-section bg-light">
         <div class="container">

@@ -39,6 +39,7 @@ class SitemapController extends Controller
         $staticPages = [
             'about-us' => ['weekly', '0.9'],
             'our-team' => ['weekly', '0.8'],
+            'board-of-directors' => ['weekly', '0.8'],
             'agenda-2049' => ['monthly', '0.8'],
             'contact' => ['monthly', '0.7'],
             'partnership' => ['monthly', '0.7'],
