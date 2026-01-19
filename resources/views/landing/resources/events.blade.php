@@ -115,24 +115,9 @@
     </div>
   </section>
 
-  <section class="ftco-section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center ftco-animate">
-          <div class="bg-light p-5">
-            <h3 class="mb-4">Host an Event with Adilisha</h3>
-            <p>
-              Is your school or organization interested in hosting a STEM workshop, training, 
-              or competition? We'd love to collaborate!
-            </p>
-            <a href="{{ route('contact') }}" class="btn btn-primary px-4 py-3 mt-3">Get in Touch</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="ftco-section bg-light">
+
+  <section class="ftco-section">
     <div class="container">
       <div class="row justify-content-center mb-4">
         <div class="col-md-8 text-center ftco-animate">
