@@ -13,26 +13,6 @@
 
             <!-- Statistics Cards -->
             <div class="row mb-4">
-                <!-- Events Statistics -->
-                <div class="col-md-6 col-xl-3">
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <p class="text-muted mb-1 small">Events</p>
-                                    <h4 class="mb-0">{{ $stats['events_total'] }}</h4>
-                                    <small class="text-success">
-                                        <i class="ti ti-arrow-up"></i> {{ $stats['events_upcoming'] }} Upcoming
-                                    </small>
-                                </div>
-                                <div class="avatar-lg bg-light-primary rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="ti ti-calendar-event text-primary" style="font-size: 28px;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Blog Posts Statistics -->
                 <div class="col-md-6 col-xl-3">
                     <div class="card border-0 shadow-sm mb-3">
@@ -147,75 +127,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-xl-3">
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <p class="text-muted mb-1 small">Open Events</p>
-                                    <h4 class="mb-0">{{ $stats['events_open'] }}</h4>
-                                    <small class="text-success">Registration Open</small>
-                                </div>
-                                <div class="avatar-lg bg-light-success rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="ti ti-calendar-check text-success" style="font-size: 24px;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Recent Activity Section -->
             <div class="row">
-                <!-- Recent Events -->
-                <div class="col-md-12 col-xl-6 mb-4">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-header bg-transparent border-0 pb-0">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6 class="mb-0">Recent Events</h6>
-                                <a href="{{ route('admin.resources.events.index') }}" class="btn btn-sm btn-link p-0">
-                                    View All <i class="ti ti-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            @forelse($recentEvents as $event)
-                            <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                                @if($event->image)
-                                    <img src="{{ asset($event->image) }}" alt="{{ $event->name }}" 
-                                         class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
-                                @else
-                                    <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" 
-                                         style="width: 50px; height: 50px;">
-                                        <i class="ti ti-calendar text-muted"></i>
-                                    </div>
-                                @endif
-                                <div class="flex-grow-1">
-                                    <h6 class="mb-1">{{ Str::limit($event->name, 40) }}</h6>
-                                    <small class="text-muted">
-                                        <i class="ti ti-calendar"></i> {{ $event->event_date->format('M d, Y') }}
-                                        <span class="ms-2">
-                                            @if($event->status === 'open')
-                                                <span class="badge bg-success">Open</span>
-                                            @elseif($event->status === 'closed')
-                                                <span class="badge bg-danger">Closed</span>
-                                            @else
-                                                <span class="badge bg-warning">Upcoming</span>
-                                            @endif
-                                        </span>
-                                    </small>
-                                </div>
-                                <a href="{{ route('admin.resources.events.edit', $event) }}" class="btn btn-sm btn-link p-0">
-                                    <i class="ti ti-edit"></i>
-                                </a>
-                            </div>
-                            @empty
-                            <p class="text-muted text-center py-3 mb-0">No events yet</p>
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Recent Blog Posts -->
                 <div class="col-md-12 col-xl-6 mb-4">
                     <div class="card border-0 shadow-sm">
@@ -273,11 +188,6 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 col-xl-3 mb-3">
-                                    <a href="{{ route('admin.resources.events.create') }}" class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center">
-                                        <i class="ti ti-plus me-2"></i> Create Event
-                                    </a>
-                                </div>
                                 <div class="col-md-6 col-xl-3 mb-3">
                                     <a href="{{ route('admin.blog.create') }}" class="btn btn-outline-info w-100 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-plus me-2"></i> Write Blog Post

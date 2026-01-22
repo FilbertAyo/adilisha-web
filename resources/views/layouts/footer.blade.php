@@ -86,7 +86,6 @@
           <ul class="list-unstyled">
           <li><a href="https://adilishastemlabs.com/" target="_blank" rel="noopener" class="py-2 d-block">STEM Labs</a></li>
             <li><a href="{{ route('about-us') }}" class="py-2 d-block">About Us</a></li>
-            <li><a href="{{ route('programs.chomoza') }}" class="py-2 d-block">Programs</a></li>
             <li><a href="{{ route('impact.stories') }}" class="py-2 d-block">Impact</a></li> 
           </ul>
         </div>

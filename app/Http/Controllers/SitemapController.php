@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Event;
 use App\Models\Story;
 use App\Models\Workshop;
 use Illuminate\Http\Response;
@@ -44,7 +43,7 @@ class SitemapController extends Controller
             'contact' => ['monthly', '0.7'],
             'partnership' => ['monthly', '0.7'],
             'donations' => ['monthly', '0.9'],
-            'programs.chomoza' => ['monthly', '0.8'],
+            'programs.stem-labs' => ['monthly', '0.8'],
         ];
 
         foreach ($staticPages as $route => $config) {
@@ -54,7 +53,6 @@ class SitemapController extends Controller
         // Resource pages
         $resourcePages = [
             'resources.gallery' => ['weekly', '0.8'],
-            'resources.events' => ['daily', '0.8'],
             'resources.reports' => ['weekly', '0.7'],
             'resources.carrier' => ['weekly', '0.6'],
             'resources.recruit' => ['weekly', '0.6'],
@@ -77,13 +75,13 @@ class SitemapController extends Controller
             );
         }
 
-        // Workshop pages
-        $xml .= $this->addUrl(route('workshops'), now(), 'weekly', '0.8');
+        // Workshop/Event pages
+        $xml .= $this->addUrl(route('events'), now(), 'weekly', '0.8');
         
         $workshops = Workshop::active()->get(['slug', 'updated_at']);
         foreach ($workshops as $workshop) {
             $xml .= $this->addUrl(
-                route('workshops.show', $workshop->slug),
+                route('events.show', $workshop->slug),
                 $workshop->updated_at,
                 'weekly',
                 '0.7'

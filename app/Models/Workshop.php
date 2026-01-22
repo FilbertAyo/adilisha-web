@@ -13,12 +13,15 @@ class Workshop extends Model
     protected $fillable = [
         'title',
         'slug',
+        'type',
+        'source',
         'overview',
         'what_we_learned',
         'workshop_date',
         'start_time',
         'end_time',
         'location',
+        'organizer',
         'duration',
         'total_participants',
         'girls_participation',
@@ -27,6 +30,9 @@ class Workshop extends Model
         'main_image',
         'status',
         'is_active',
+        'registration_open_date',
+        'registration_close_date',
+        'application_link',
         'created_by',
     ];
 
@@ -36,6 +42,8 @@ class Workshop extends Model
         'end_time' => 'datetime:H:i',
         'is_active' => 'boolean',
         'attendance_rate' => 'decimal:2',
+        'registration_open_date' => 'datetime',
+        'registration_close_date' => 'datetime',
     ];
 
     protected static function boot()
@@ -102,6 +110,39 @@ class Workshop extends Model
         return $query->where('status', 'ongoing');
     }
 
+    public function scopeOpen($query)
+    {
+        return $query->where('status', 'open')
+            ->where(function($q) {
+                $q->whereNull('registration_close_date')
+                  ->orWhere('registration_close_date', '>=', now());
+            });
+    }
+
+    public function scopeClosed($query)
+    {
+        return $query->where('status', 'closed')
+            ->orWhere(function($q) {
+                $q->where('status', 'open')
+                  ->where('registration_close_date', '<', now());
+            });
+    }
+
+    public function scopeInternal($query)
+    {
+        return $query->where('source', 'internal');
+    }
+
+    public function scopeExternal($query)
+    {
+        return $query->where('source', 'external');
+    }
+
+    public function scopeByType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
     public function scopeByStatus($query, $status)
     {
         return $query->where('status', $status);
@@ -133,7 +174,27 @@ class Workshop extends Model
             'ongoing' => 'badge-warning',
             'completed' => 'badge-success',
             'cancelled' => 'badge-danger',
+            'open' => 'badge-success',
+            'closed' => 'badge-danger',
             default => 'badge-secondary',
         };
+    }
+
+    public function getIsRegistrationOpenAttribute()
+    {
+        if ($this->status !== 'open') {
+            return false;
+        }
+
+        $now = now();
+        if ($this->registration_open_date && $now < $this->registration_open_date) {
+            return false;
+        }
+
+        if ($this->registration_close_date && $now > $this->registration_close_date) {
+            return false;
+        }
+
+        return true;
     }
 }

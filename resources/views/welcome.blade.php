@@ -3,50 +3,7 @@
     @include('partials.hero')
     @include('partials.actions')
 
-<section class="ftco-section">
-  <div class="container">
-    <div class="row d-flex">
-      
-      <div class="col-md-6 d-flex ftco-animate">
-        <div class="img img-about align-self-stretch" 
-             style="background-image: url(front-end/images/about_img.jpg); width: 100%;">
-        </div>
-      </div>
 
-      <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">About Adilisha</h2>
-
-        <p>
-          Adilisha Child and Youth Development Organization is a Tanzania-based NGO
-          empowering children—especially girls—to succeed in STEM education and leadership.
-          We work with schools, teachers, and communities to deliver hands-on STEM learning
-          through the VUTAMDOGO and CHOMOZA programs.
-        </p>
-
-        <p>
-          Guided by the 
-          <a href="{{ route('agenda-2049') }}" class="text-primary font-weight-bold">
-            Adilisha Agenda 2049
-          </a>,
-          we are committed to closing the gender gap in technology and equipping millions
-          of young people with skills for the digital economy and future innovation.
-        </p>
-
-        <p>
-          <a href="{{ route('about-us') }}" class="btn btn-primary px-4 py-2 mt-2">
-            Read More
-          </a>
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-   
 
   @include('partials.story')
 

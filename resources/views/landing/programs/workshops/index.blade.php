@@ -20,13 +20,13 @@
         <div class="row mb-4">
           <div class="col-md-12">
             <div class="mb-3">
-              <a href="{{ route('workshops') }}" class="btn btn-sm {{ !request('status') ? 'btn-primary' : 'btn-dark' }} mr-2">
+              <a href="{{ route('events') }}" class="btn btn-sm {{ !request('status') ? 'btn-primary' : 'btn-dark' }} mr-2">
                 All ({{ $counts['all'] }})
               </a>
-              <a href="{{ route('workshops', ['status' => 'upcoming']) }}" class="btn btn-sm {{ request('status') == 'upcoming' ? 'btn-primary' : 'btn-dark' }} mr-2">
+              <a href="{{ route('events', ['status' => 'upcoming']) }}" class="btn btn-sm {{ request('status') == 'upcoming' ? 'btn-primary' : 'btn-dark' }} mr-2">
                 Upcoming ({{ $counts['upcoming'] }})
               </a>
-              <a href="{{ route('workshops', ['status' => 'completed']) }}" class="btn btn-sm {{ request('status') == 'completed' ? 'btn-primary' : 'btn-dark' }}">
+              <a href="{{ route('events', ['status' => 'completed']) }}" class="btn btn-sm {{ request('status') == 'completed' ? 'btn-primary' : 'btn-dark' }}">
                 Completed ({{ $counts['completed'] }})
               </a>
             </div>
@@ -34,7 +34,7 @@
             <!-- Advanced Filters -->
             <div class="card">
               <div class="card-body p-3">
-                <form method="GET" action="{{ route('workshops') }}" class="row align-items-end g-3">
+                <form method="GET" action="{{ route('events') }}" class="row align-items-end g-3">
                   @if(request('status'))
                     <input type="hidden" name="status" value="{{ request('status') }}">
                   @endif
@@ -61,7 +61,7 @@
                     <button type="submit" class="btn btn-sm btn-primary w-100 mb-1">
                       <i class="fa fa-filter"></i> Filter
                     </button>
-                    <a href="{{ route('workshops') }}" class="btn btn-sm btn-secondary w-100">
+                    <a href="{{ route('events') }}" class="btn btn-sm btn-dark w-100">
                       <i class="fa fa-refresh"></i> Clear
                     </a>
                   </div>
@@ -75,21 +75,47 @@
           @forelse($workshops as $workshop)
             <div class="col-md-4 d-flex ftco-animate">
               <div class="blog-entry align-self-stretch">
-                <a href="{{ route('workshops.show', $workshop->slug) }}" class="block-20" 
+                <a href="{{ route('events.show', $workshop->slug) }}" class="block-20" 
                    style="background-image: url('{{ $workshop->main_image ? asset('storage/' . $workshop->main_image) : asset('front-end/images/workshop-1.jpg') }}');">
                 </a>
                 <div class="text p-4 d-block">
                   <div class="meta mb-3">
                     <div><a href="#">{{ $workshop->formatted_date }}</a></div>
-                    <div><span class="badge badge-{{ $workshop->status_badge_class }}">{{ ucfirst($workshop->status) }}</span></div>
+                    <div>
+                      @if($workshop->type)
+                        <span class="badge badge-info">{{ ucfirst($workshop->type) }}</span>
+                      @endif
+                      @if($workshop->source)
+                        <span class="badge badge-{{ $workshop->source == 'internal' ? 'primary' : 'warning' }}">
+                          {{ $workshop->source == 'internal' ? 'Internal' : 'External' }}
+                        </span>
+                      @endif
+                      <span class="badge badge-{{ $workshop->status_badge_class }}">{{ ucfirst($workshop->status) }}</span>
+                    </div>
                   </div>
                   <h3 class="heading mb-4">
-                    <a href="{{ route('workshops.show', $workshop->slug) }}">{{ $workshop->title }}</a>
+                    <a href="{{ route('events.show', $workshop->slug) }}">{{ $workshop->title }}</a>
                   </h3>
                   <p class="time-loc">
                     <span class="mr-2"><i class="icon-clock-o"></i> {{ $workshop->formatted_time_range }}</span> 
                     <span><i class="icon-map-o"></i> {{ $workshop->location }}</span>
+                    @if($workshop->organizer)
+                      <span class="ml-2"><i class="icon-user"></i> {{ $workshop->organizer }}</span>
+                    @endif
                   </p>
+                  @if($workshop->is_registration_open && $workshop->application_link)
+                    <p class="mb-2">
+                      <a href="{{ $workshop->application_link }}" target="_blank" class="btn btn-sm btn-success">
+                        <i class="icon-link"></i> Register Now
+                      </a>
+                    </p>
+                  @elseif($workshop->application_link && $workshop->status == 'open')
+                    <p class="mb-2">
+                      <a href="{{ $workshop->application_link }}" target="_blank" class="btn btn-sm btn-primary">
+                        <i class="icon-link"></i> Apply Now
+                      </a>
+                    </p>
+                  @endif
                   @if($workshop->overview)
                     <p>{{ Str::limit($workshop->overview, 120) }}</p>
                   @endif
@@ -113,7 +139,7 @@
                     </div>
                   @endif
                   
-                  <p><a href="{{ route('workshops.show', $workshop->slug) }}">View Details <i class="ion-ios-arrow-forward"></i></a></p>
+                  <p><a href="{{ route('events.show', $workshop->slug) }}">View Details <i class="ion-ios-arrow-forward"></i></a></p>
                 </div>
               </div>
             </div>

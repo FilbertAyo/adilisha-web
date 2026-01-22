@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span class="mr-2"><a href="{{ route('workshops') }}">Workshops</a></span> <span>Workshop Details</span></p>
+             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span class="mr-2"><a href="{{ route('events') }}">Workshops</a></span> <span>Workshop Details</span></p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Workshop Details</h1>
           </div>
         </div>
@@ -16,18 +16,51 @@
         <div class="row">
           <div class="col-md-8 ftco-animate">
             
-            <!-- Workshop Title and Overview -->
+            <!-- Workshop/Event Title and Overview -->
             <h2 class="mb-3">{{ $workshop->title }}</h2>
             <div class="meta mb-4">
-              <div class="d-flex align-items-center mb-3">
-                <span class="mr-3"><i class="icon-calendar"></i> {{ $workshop->formatted_date }}</span>
-                <span class="mr-3"><i class="icon-clock-o"></i> {{ $workshop->formatted_time_range }}</span>
-                <span><i class="icon-map-o"></i> {{ $workshop->location }}</span>
+              <div class="d-flex align-items-center mb-3 flex-wrap">
+                @if($workshop->type)
+                  <span class="mr-3 mb-2"><i class="icon-tag"></i> {{ ucfirst($workshop->type) }}</span>
+                @endif
+                <span class="mr-3 mb-2"><i class="icon-calendar"></i> {{ $workshop->formatted_date }}</span>
+                <span class="mr-3 mb-2"><i class="icon-clock-o"></i> {{ $workshop->formatted_time_range }}</span>
+                <span class="mr-3 mb-2"><i class="icon-map-o"></i> {{ $workshop->location }}</span>
+                @if($workshop->organizer)
+                  <span class="mr-3 mb-2"><i class="icon-user"></i> {{ $workshop->organizer }}</span>
+                @endif
+                @if($workshop->source)
+                  <span class="mr-3 mb-2">
+                    <span class="badge badge-{{ $workshop->source == 'internal' ? 'primary' : 'info' }}">
+                      {{ $workshop->source == 'internal' ? 'Internal' : 'External' }}
+                    </span>
+                  </span>
+                @endif
               </div>
               @if($workshop->status)
                 <span class="badge badge-{{ $workshop->status_badge_class }}">{{ ucfirst($workshop->status) }}</span>
               @endif
+              @if($workshop->is_registration_open && $workshop->application_link)
+                <a href="{{ $workshop->application_link }}" target="_blank" class="btn btn-primary btn-sm ml-2">
+                  <i class="icon-link"></i> Register Now
+                </a>
+              @elseif($workshop->application_link && $workshop->status == 'open')
+                <a href="{{ $workshop->application_link }}" target="_blank" class="btn btn-primary btn-sm ml-2">
+                  <i class="icon-link"></i> Apply Now
+                </a>
+              @endif
             </div>
+            
+            @if($workshop->registration_open_date || $workshop->registration_close_date)
+              <div class="alert alert-info mb-4">
+                @if($workshop->registration_open_date)
+                  <strong>Registration Opens:</strong> {{ $workshop->registration_open_date->format('F d, Y h:i A') }}<br>
+                @endif
+                @if($workshop->registration_close_date)
+                  <strong>Registration Closes:</strong> {{ $workshop->registration_close_date->format('F d, Y h:i A') }}
+                @endif
+              </div>
+            @endif
             
             @if($workshop->overview)
               <p>{{ $workshop->overview }}</p>
@@ -160,7 +193,7 @@
           <!-- Sidebar -->
           <div class="col-md-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="{{ route('workshops') }}" method="GET" class="search-form">
+              <form action="{{ route('events') }}" method="GET" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
                   <input type="text" name="search" class="form-control" placeholder="Search workshops...">
@@ -189,12 +222,12 @@
                 <h3>Recent Workshops</h3>
                 @foreach($recentWorkshops as $recentWorkshop)
                   <div class="block-21 mb-4 d-flex">
-                    <a href="{{ route('workshops.show', $recentWorkshop->slug) }}" class="blog-img mr-4" 
+                    <a href="{{ route('events.show', $recentWorkshop->slug) }}" class="blog-img mr-4" 
                        style="background-image: url({{ $recentWorkshop->main_image ? asset('storage/' . $recentWorkshop->main_image) : asset('front-end/images/workshop-1.jpg') }});"></a>
                     <div class="text">
-                      <h3 class="heading"><a href="{{ route('workshops.show', $recentWorkshop->slug) }}">{{ $recentWorkshop->title }}</a></h3>
+                      <h3 class="heading"><a href="{{ route('events.show', $recentWorkshop->slug) }}">{{ $recentWorkshop->title }}</a></h3>
                       <div class="meta">
-                        <div><a href="{{ route('workshops.show', $recentWorkshop->slug) }}">
+                        <div><a href="{{ route('events.show', $recentWorkshop->slug) }}">
                           <span class="icon-calendar"></span> {{ $recentWorkshop->formatted_date }}
                         </a></div>
                       </div>

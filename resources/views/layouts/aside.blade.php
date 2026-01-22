@@ -96,13 +96,6 @@
               </a>
             </li>
 
-            <li class="pc-item">
-              <a href="{{ route('admin.resources.events.index') }}" class="pc-link">
-                <span class="pc-micon"><i class="ti ti-calendar-event"></i></span>
-                <span class="pc-mtext">Events & Global Challenges</span>
-              </a>
-            </li>
-
           </ul>
         </li>
 

@@ -2,11 +2,8 @@
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate text-center">
-        <h2 class="mb-4">Inspiring Stories of Change</h2>
-        <p>
-          Meet the students, teachers, and communities whose lives have been transformed 
-          through Adilisha's STEM programs.
-        </p>
+        <h2 class="mb-4">Stories of Change</h2>
+       
       </div>
     </div>
 

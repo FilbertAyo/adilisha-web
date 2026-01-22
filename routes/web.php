@@ -19,10 +19,6 @@ Route::get('/', function () {
         return \App\Models\Blog::with('user')->published()->latest('published_at')->take(3)->get();
     });
     
-    $events = \Illuminate\Support\Facades\Cache::remember('home.events', 1800, function () {
-        return \App\Models\Event::visible()->upcoming()->orderBy('event_date', 'asc')->take(3)->get();
-    });
-    
     $stories = \Illuminate\Support\Facades\Cache::remember('home.stories', 1800, function () {
         return \App\Models\Story::published()->ordered()->take(3)->get();
     });
@@ -34,7 +30,7 @@ Route::get('/', function () {
         'keywords' => 'STEM education Tanzania, girls in STEM, youth empowerment, VUTAMDOGO, CHOMOZA, technology education, child development NGO',
     ];
     
-    return view('welcome', compact('featuredGalleries', 'recentBlogs', 'events', 'stories', 'seoMeta'));
+    return view('welcome', compact('featuredGalleries', 'recentBlogs', 'stories', 'seoMeta'));
 })->name('home');
 
 Route::get('/contact', function () {
@@ -66,8 +62,8 @@ Route::get('/agenda-2049', function () {
 Route::get('/blog', [\App\Http\Controllers\Landing\BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [\App\Http\Controllers\Landing\BlogController::class, 'show'])->name('blog.show');
 
-Route::get('/workshops', [\App\Http\Controllers\Landing\WorkshopController::class, 'index'])->name('workshops');
-Route::get('/workshops/{slug}', [\App\Http\Controllers\Landing\WorkshopController::class, 'show'])->name('workshops.show');
+Route::get('/events', [\App\Http\Controllers\Landing\WorkshopController::class, 'index'])->name('events');
+Route::get('/events/{slug}', [\App\Http\Controllers\Landing\WorkshopController::class, 'show'])->name('events.show');
 
 Route::get('/partnership', function () {
     return view('landing.partnership.index');
@@ -106,8 +102,6 @@ Route::prefix('resources')->group(function () {
         return view('landing.resources.gallery', compact('galleries', 'categories', 'categoryCounts', 'categoryId'));
     })->name('resources.gallery');
     
-    Route::get('/events', [\App\Http\Controllers\Frontend\EventController::class, 'index'])->name('resources.events');
-    
     Route::get('/reports', [\App\Http\Controllers\ReportController::class, 'index'])->name('resources.reports');
     
     Route::get('/publications', function () {
@@ -120,9 +114,9 @@ Route::get('/reports', [\App\Http\Controllers\ReportController::class, 'index'])
 Route::get('/reports/{report}/download', [\App\Http\Controllers\ReportController::class, 'download'])->name('reports.download');
 
 Route::prefix('programs')->group(function () {
-    Route::get('/chomoza', function () {
-        return view('landing.programs.chomoza');
-    })->name('programs.chomoza');
+    Route::get('/stem-labs', function () {
+        return view('landing.programs.stem-labs');
+    })->name('programs.stem-labs');
 });
 
 Route::prefix('impact')->group(function () {
@@ -136,9 +130,6 @@ Route::prefix('impact')->group(function () {
 Route::get('/dashboard', function () {
     // Statistics
     $stats = [
-        'events_total' => \App\Models\Event::count(),
-        'events_upcoming' => \App\Models\Event::visible()->upcoming()->count(),
-        'events_open' => \App\Models\Event::visible()->open()->count(),
         'blogs_total' => \App\Models\Blog::count(),
         'blogs_published' => \App\Models\Blog::published()->count(),
         'gallery_total' => \App\Models\Gallery::count(),
@@ -157,11 +148,6 @@ Route::get('/dashboard', function () {
     ];
 
     // Recent items
-    $recentEvents = \App\Models\Event::with('creator')
-        ->orderBy('created_at', 'desc')
-        ->take(5)
-        ->get();
-    
     $recentBlogs = \App\Models\Blog::with('user')
         ->orderBy('created_at', 'desc')
         ->take(5)
@@ -171,7 +157,7 @@ Route::get('/dashboard', function () {
         ->take(5)
         ->get();
 
-    return view('dashboard', compact('stats', 'recentEvents', 'recentBlogs', 'recentFeedback'));
+    return view('dashboard', compact('stats', 'recentBlogs', 'recentFeedback'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -207,12 +193,6 @@ Route::middleware('auth')->group(function () {
         Route::put('feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'update'])->name('feedback.update');
         Route::post('feedback/{feedback}/toggle-active', [\App\Http\Controllers\Admin\FeedbackController::class, 'toggleActive'])->name('feedback.toggle-active');
         Route::delete('feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('feedback.destroy');
-        
-        // Admin Events Management
-        Route::prefix('resources')->name('resources.')->group(function () {
-            Route::resource('events', \App\Http\Controllers\Admin\EventController::class);
-            Route::patch('events/{event}/toggle-visibility', [\App\Http\Controllers\Admin\EventController::class, 'toggleVisibility'])->name('events.toggle-visibility');
-        });
         
         // Admin Workshops Management
         Route::resource('workshops', \App\Http\Controllers\Admin\WorkshopController::class);
