@@ -24,7 +24,7 @@ Route::get('/', function () {
     });
     
     $stories = \Illuminate\Support\Facades\Cache::remember('home.stories', 1800, function () {
-        return \App\Models\Story::published()->ordered()->take(4)->get();
+        return \App\Models\Story::published()->ordered()->take(3)->get();
     });
     
     // SEO data for homepage

@@ -2,25 +2,39 @@
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate text-center">
-        <h2 class="mb-4">Success Stories</h2>
+        <h2 class="mb-4">Inspiring Stories of Change</h2>
         <p>
-          Be inspired by real stories of children, teachers, and entire communities transformed through our STEM programs. These journeys showcase lifelong impact and the power of opportunity.
+          Meet the students, teachers, and communities whose lives have been transformed 
+          through Adilisha's STEM programs.
         </p>
       </div>
     </div>
+
     <div class="row">
       @forelse($stories as $story)
-        <div class="col-lg-6 d-flex mb-sm-4 ftco-animate">
-          <div class="staff">
-            <div class="d-flex mb-4">
-              <div class="img" style="background-image: url({{ $story->profile_picture && file_exists(public_path('storage/' . $story->profile_picture)) ? asset('storage/' . $story->profile_picture) : asset($story->profile_picture ?? 'front-end/images/success-1.jpg') }});"></div>
-              <div class="info ml-4">
-                <h3><a href="{{ route('impact.stories.show', $story->id) }}">{{ $story->title }}</a></h3>
-                <span class="position">{{ $story->location }}</span>
-                <div class="text">
-                  <p>{{ $story->excerpt }}</p>
+        <div class="col-md-6 col-lg-4 d-flex mb-4 ftco-animate">
+          <div class="blog-entry align-self-stretch">
+            <a href="{{ route('impact.stories.show', $story->id) }}" class="block-20" 
+               style="background-image: url('{{ $story->profile_picture && file_exists(public_path('storage/' . $story->profile_picture)) ? asset('storage/' . $story->profile_picture) : asset($story->profile_picture ?? 'front-end/images/success-1.jpg') }}');">
+            </a>
+            <div class="text p-4 d-block">
+              <div class="meta mb-3">
+                <div>
+                  <span class="icon-location-arrow mr-2"></span>{{ $story->location }}
+                </div>
+                <div>
+                  <span class="icon-tag mr-2"></span>
+                  <span class="badge badge-primary">{{ ucfirst($story->category) }}</span>
                 </div>
               </div>
+              <h3 class="heading mb-3">
+                <a href="{{ route('impact.stories.show', $story->id) }}">{{ $story->title }}</a>
+              </h3>
+              <p class="mb-3"><strong>{{ $story->name }}</strong></p>
+              <p>{{ $story->excerpt }}</p>
+              <a href="{{ route('impact.stories.show', $story->id) }}" class="btn btn-primary btn-sm">
+                Read Full Story
+              </a>
             </div>
           </div>
         </div>
@@ -30,6 +44,7 @@
         </div>
       @endforelse
     </div>
+
     <div class="row justify-content-center mt-4">
       <a href="{{ route('impact.stories') }}" class="btn btn-primary btn-lg px-5 py-3">
         View All Stories

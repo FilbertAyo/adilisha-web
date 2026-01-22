@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Story;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class StoryController extends Controller
 {
@@ -54,6 +55,9 @@ class StoryController extends Controller
         }
 
         Story::create($validated);
+
+        // Clear cache for home stories
+        Cache::forget('home.stories');
 
         return redirect()->route('admin.impact.stories.index')
             ->with('success', 'Success story created successfully.');
@@ -110,6 +114,9 @@ class StoryController extends Controller
 
         $story->update($validated);
 
+        // Clear cache for home stories
+        Cache::forget('home.stories');
+
         return redirect()->route('admin.impact.stories.index')
             ->with('success', 'Success story updated successfully.');
     }
@@ -128,6 +135,9 @@ class StoryController extends Controller
         }
 
         $story->delete();
+
+        // Clear cache for home stories
+        Cache::forget('home.stories');
 
         return redirect()->route('admin.impact.stories.index')
             ->with('success', 'Success story deleted successfully.');
