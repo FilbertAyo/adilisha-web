@@ -33,7 +33,7 @@
           <div class="col-md-6 col-lg-4 d-flex mb-4 ftco-animate">
             <div class="blog-entry align-self-stretch">
               <a href="{{ route('impact.stories.show', $story->id) }}" class="block-20" 
-                 style="background-image: url('{{ $story->profile_picture && file_exists(public_path('storage/' . $story->profile_picture)) ? asset('storage/' . $story->profile_picture) : asset($story->profile_picture ?? 'front-end/images/success-1.jpg') }}');">
+                 style="background-image: url('{{ $story->profile_picture ? asset('storage/' . $story->profile_picture) : asset('front-end/images/success-1.jpg') }}');">
               </a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">

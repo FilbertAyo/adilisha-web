@@ -24,7 +24,7 @@
             <!-- Story Header -->
             <div class="mb-4">
               <div class="d-flex align-items-center mb-3">
-                <img src="{{ $story->profile_picture && file_exists(public_path('storage/' . $story->profile_picture)) ? asset('storage/' . $story->profile_picture) : asset($story->profile_picture ?? 'front-end/images/success-1.jpg') }}" 
+                <img src="{{ $story->profile_picture ? asset('storage/' . $story->profile_picture) : asset('front-end/images/success-1.jpg') }}" 
                      alt="{{ $story->name }}" 
                      class="rounded-circle mr-3" 
                      style="width: 80px; height: 80px; object-fit: cover;">
@@ -48,14 +48,14 @@
               <div class="row mb-5">
                 @if($story->image_1)
                   <div class="col-md-{{ $story->image_2 ? '6' : '12' }} mb-4">
-                    <img src="{{ file_exists(public_path('storage/' . $story->image_1)) ? asset('storage/' . $story->image_1) : asset($story->image_1) }}" 
+                    <img src="{{ asset('storage/' . $story->image_1) }}" 
                          alt="{{ $story->name }}" 
                          class="img-fluid rounded">
                   </div>
                 @endif
                 @if($story->image_2)
                   <div class="col-md-6 mb-4">
-                    <img src="{{ file_exists(public_path('storage/' . $story->image_2)) ? asset('storage/' . $story->image_2) : asset($story->image_2) }}" 
+                    <img src="{{ asset('storage/' . $story->image_2) }}" 
                          alt="{{ $story->name }}" 
                          class="img-fluid rounded">
                   </div>
@@ -82,7 +82,7 @@
               @foreach($relatedStories as $related)
                 <div class="block-21 mb-4 d-flex">
                   <a class="blog-img mr-4" 
-                     style="background-image: url({{ $related->profile_picture && file_exists(public_path('storage/' . $related->profile_picture)) ? asset('storage/' . $related->profile_picture) : asset($related->profile_picture ?? 'front-end/images/success-1.jpg') }});"></a>
+                     style="background-image: url('{{ $related->profile_picture ? asset('storage/' . $related->profile_picture) : asset('front-end/images/success-1.jpg') }}');"></a>
                   <div class="text">
                     <h3 class="heading">
                       <a href="{{ route('impact.stories.show', $related->id) }}">{{ $related->title }}</a>
