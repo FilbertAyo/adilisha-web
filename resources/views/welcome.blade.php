@@ -2,9 +2,6 @@
     
     @include('partials.hero')
     @include('partials.actions')
-
-
-
   @include('partials.story')
 
 

@@ -48,7 +48,7 @@
           <a class="nav-link dropdown-toggle" href="javascript:void(0)"
              id="dropdown-resources" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-            Resources
+           Join us
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdown-resources">
             <a class="dropdown-item" href="{{ route('blog') }}"><strong>Blog</strong></a>
