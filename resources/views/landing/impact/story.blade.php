@@ -10,7 +10,7 @@
             <span class="mr-2"><a href="{{ route('impact.stories') }}">Success Stories</a></span>
             <span>{{ $story->name }}</span>
           </p>
-          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $story->title }}</h1>
+          <h2 class="mb-3 bread text-white" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $story->title }}</h2>
         </div>
       </div>
     </div>
