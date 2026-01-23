@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Landing\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\SitemapController;
@@ -33,9 +34,8 @@ Route::get('/', function () {
     return view('welcome', compact('featuredGalleries', 'recentBlogs', 'stories', 'seoMeta'));
 })->name('home');
 
-Route::get('/contact', function () {
-    return view('landing.about.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/about-us', function () {
     return view('landing.about.about-us');
