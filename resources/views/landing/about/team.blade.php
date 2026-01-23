@@ -26,7 +26,6 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-8 heading-section ftco-animate text-center">
             <h2 class="mb-4">Meet Our Team</h2>
-            <p>Our dedicated team works together to create lasting impact at Adilisha.</p>
           </div>
         </div>
 

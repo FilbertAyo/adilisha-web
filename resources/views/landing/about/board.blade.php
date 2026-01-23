@@ -26,7 +26,6 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-8 heading-section ftco-animate text-center">
             <h2 class="mb-4">Board of Directors</h2>
-            <p>Our Board of Directors guides Adilisha, ensuring we empower youth through STEM education</p>
           </div>
         </div>
 
