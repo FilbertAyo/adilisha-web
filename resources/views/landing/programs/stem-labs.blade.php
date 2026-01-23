@@ -12,7 +12,7 @@
             <span>STEM Clubs</span>
           </p>
           <h1 class="mb-4 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-size: 4.5rem; font-weight: 700; letter-spacing: -0.02em;">STEM Clubs</h1>
-          <p class="lead" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-size: 1.5rem; font-weight: 300;">Where innovation meets inspiration</p>
+
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
           <div class="img img-about align-self-stretch rounded shadow-lg"
-               style="background-image: url({{ asset('front-end/images/agenda1.jpg') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
+               style="background-image: url({{ asset('front-end/images/stem-club.jpg') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
           </div>
         </div>
         <div class="col-lg-6 pl-lg-5">
@@ -53,14 +53,14 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0 order-lg-2">
-          <div class="img img-about align-self-stretch rounded shadow-lg"
-               style="background-image: url({{ asset('front-end/images/agenda1.jpg') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
+          <div class="img img-about align-self-stretch"
+               style="background-image: url({{ asset('front-end/images/stem-clubs3.png') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
           </div>
         </div>
         <div class="col-lg-6 pr-lg-5 order-lg-1">
           <h2 class="mb-4 text-white" style="font-size: 3.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">At the Heart</h2>
           <p class="text-white mb-4" style="font-size: 1.4rem; font-weight: 300; line-height: 1.6;">
-            At the heart of Adilisha's work are the <strong>VutaMdogo</strong> and <strong>Chomoza STEM Models</strong>, designed to support children—especially girls from rural areas—to excel in STEM education.
+            At the heart of Adilisha's work are the <strong>VutaMdogo</strong> and <strong>Chomoza STEM Models</strong>, designed to support children especially girls from rural areas—to excel in STEM education.
           </p>
         </div>
       </div>
@@ -72,8 +72,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="img img-about align-self-stretch rounded shadow-lg"
-               style="background-image: url({{ asset('front-end/images/agenda1.jpg') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
+          <div class="img img-about align-self-stretch"
+               style="background-image: url({{ asset('front-end/images/stem-clubs2.png') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
           </div>
         </div>
         <div class="col-lg-6 pl-lg-5">
@@ -92,8 +92,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0 order-lg-2">
-          <div class="img img-about align-self-stretch rounded shadow-lg"
-               style="background-image: url({{ asset('front-end/images/agenda1.jpg') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
+          <div class="img img-about align-self-stretch"
+               style="background-image: url({{ asset('front-end/images/stem-clubs1.png') }}); width: 100%; height: 100%; min-height: 500px; background-size: cover; background-position: center;">
           </div>
         </div>
         <div class="col-lg-6 pr-lg-5 order-lg-1">

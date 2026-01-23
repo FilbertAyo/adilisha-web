@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate text-center">
-        <h2 class="mb-4">Stories of Change</h2>
+        <h2 class="mb-4">Our Impact</h2>
        
       </div>
     </div>
@@ -42,11 +42,6 @@
       @endforelse
     </div>
 
-    <div class="row justify-content-center mt-4">
-      <a href="{{ route('impact.stories') }}" class="btn btn-primary btn-lg px-5 py-3">
-        View All Stories
-      </a>
-    </div>
   </div>
 </section>
        

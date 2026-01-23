@@ -7,8 +7,7 @@
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                     <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>About</span></p>
                     <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Adilisha Agenda 2049</h1>
-                    <p class="bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Increasing Girls Interest and Proficiency in STEM</p>
-                </div>
+               </div>
             </div>
         </div>
     </div>
@@ -17,7 +16,7 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 ftco-animate text-center">
-                    <h2 class="mb-4">ADILISHA AGENDA 2049: STEM Clubs and Labs in Every Tanzanian School</h2>
+                    <h2 class="mb-4">STEM Clubs and Labs in Every Tanzanian School</h2>
                 </div>
             </div>
 
@@ -31,13 +30,12 @@
 
                 <!-- Vision and Goal Content -->
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h3 class="mb-3 text-primary">Vision</h3>
+                    <h1 class="mb-3 text-dark" >Vision and Goal</h3>
                     <p class="lead text-justify">
-                        Empowering a generation of young Tanzanians—especially girls—through access to STEM education. By 2049, we aim to establish STEM clubs and labs in all 3,904 government secondary schools across Tanzania, transforming the future workforce and addressing pressing global challenges like poverty, gender inequality, and technological advancement.
-                    </p>
+                        Empowering young Tanzanians especially girls—by expanding STEM access. By 2049, our goal is STEM clubs and labs in all 3,904 government secondary schools, shaping the future workforce and tackling poverty, gender inequality, and tech advancement.
 
-                    <h4 class="mt-4 mb-3">Goal</h4>
-                    <p class="font-weight-bold text-primary text-justify">
+                    
+                    <p class="font-weight-bold text-primary text-justify"  style="font-size: 1.4rem; font-weight: 300; line-height: 1.6;">
                         Equip all government secondary schools with fully functioning STEM clubs by 2030 and STEM labs by 2049.
                     </p>
 
@@ -47,32 +45,22 @@
         </div>
     </section>
 
-    <section class="ftco-section bg-light">
+    <section class="ftco-section bg-primary">
         <div class="container">
             <div class="row d-flex align-items-center">
                 <!-- Why STEM Content -->
-                <div class="col-md-6 pr-md-5 ftco-animate">
-                    <h2 class="mb-4">Why STEM? The Case for Action in Tanzania</h2>
+                <div class="col-md-8 pr-md-5 ftco-animate">
+                    <h2 class="mb-4 text-white font-weight-bold">Why STEM? The Case for Action in Tanzania</h2>
 
-                    <h4 class="mt-4 mb-3">Current Situation</h4>
-                    <ul class="list-unstyled text-justify">
-                        <li class="mb-3">
-                            <strong class="text-warning">Gender Gap:</strong> Only 25% of Tanzanian students pursuing STEM fields are girls.
-                        </li>
-                        <li class="mb-3">
-                            <strong class="text-warning">Rural Disadvantage:</strong> Rural schools lack resources for science and technology education, exacerbating inequality.
-                        </li>
-                        <li class="mb-3">
-                            <strong class="text-warning">Future Workforce:</strong> Tanzania needs a STEM-literate workforce to participate in the digital economy and compete globally.
-                        </li>
-                    </ul>
-
+                    <p class="text-white text-justify" style="font-size: 1.25rem;">
+                        There is a significant gender gap in STEM fields in Tanzania, with only 25% of students pursuing these subjects being girls. Rural schools face additional challenges as they often lack adequate resources for science and technology education, which only further widens educational inequality. As Tanzania works to strengthen its position in the digital economy and the global marketplace, the country urgently needs a STEM-literate workforce to ensure its youth are equipped for future opportunities.
+                    </p>
                 </div>
 
                 <!-- Image -->
-                <div class="col-md-6 ftco-animate">
+                <div class="col-md-4 ftco-animate">
                     <div class="img img-about align-self-stretch rounded"
-                        style="background-image: url('{{ asset('front-end/images/agenda2.jpg') }}'); width: 100%; height: 100%; min-height: 420px;">
+                        style="background-image: url('{{ asset('front-end/images/agenda-stats.png') }}'); width: 100%; height: 100%; min-height: 420px;">
                     </div>
                 </div>
             </div>
